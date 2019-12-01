@@ -83,15 +83,15 @@
 
 
 
-<meta name="description" content="1.1 NodeJs 1 下载安装  2 查看是否安装成功：添加到环境变量；node —version：输出版本号  1.2 hexo或hexo-cli npm install -g hexo:nodejs版本低，失败    &amp;gt;8 解析错误：npm set registry https:&#x2F;&#x2F;registry.npmjs.org&#x2F;（更改镜像源）  npm install -g hexo-cli">
+<meta name="description" content="1.1 NodeJs 1 下载安装  2 查看是否安装成功：添加到环境变量；node —version：输出版本号  1.2 hexo或hexo-cli npm install -g hexo  失败   nodejs版本要求 &amp;gt;8  解析错误：npm set registry https:&#x2F;&#x2F;registry.npmjs.org&#x2F;（更改镜像源）    npm install -g hexo">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博客迁移到新电脑">
 <meta property="og:url" content="https:&#x2F;&#x2F;mengki258.github.io&#x2F;hexo-migrate-to-new-computer&#x2F;index.html">
 <meta property="og:site_name" content="MengKi">
-<meta property="og:description" content="1.1 NodeJs 1 下载安装  2 查看是否安装成功：添加到环境变量；node —version：输出版本号  1.2 hexo或hexo-cli npm install -g hexo:nodejs版本低，失败    &amp;gt;8 解析错误：npm set registry https:&#x2F;&#x2F;registry.npmjs.org&#x2F;（更改镜像源）  npm install -g hexo-cli">
+<meta property="og:description" content="1.1 NodeJs 1 下载安装  2 查看是否安装成功：添加到环境变量；node —version：输出版本号  1.2 hexo或hexo-cli npm install -g hexo  失败   nodejs版本要求 &amp;gt;8  解析错误：npm set registry https:&#x2F;&#x2F;registry.npmjs.org&#x2F;（更改镜像源）    npm install -g hexo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T06:43:56.573Z">
+<meta property="og:updated_time" content="2019-12-01T07:00:31.228Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -346,7 +346,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-01T14:43:56+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-01T15:00:31+08:00">
                 2019-12-01
               </time>
             
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  336
+                  213
                 </span>
               
 
@@ -433,21 +433,23 @@
 
       
         <h4 id="1-1-NodeJs"><a href="#1-1-NodeJs" class="headerlink" title="1.1 NodeJs"></a>1.1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">NodeJs</a></h4><ul>
-<li>1 下载安装 </li>
+<li>1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">下载安装</a> </li>
 <li>2 查看是否安装成功：添加到环境变量；node —version：输出版本号</li>
 </ul>
 <h4 id="1-2-hexo或hexo-cli"><a href="#1-2-hexo或hexo-cli" class="headerlink" title="1.2 hexo或hexo-cli"></a>1.2 hexo或hexo-cli</h4><ul>
-<li><p><code>npm install -g hexo</code>:nodejs版本低，失败    &gt;8</p>
-<p><del>解析错误</del>：<code>npm set registry https://registry.npmjs.org/</code>（更改镜像源）</p>
+<li><p><code>npm install -g hexo</code></p>
+<ul>
+<li><p>失败   nodejs版本要求 &gt;8</p>
+</li>
+<li><p>解析错误：<code>npm set registry https://registry.npmjs.org/</code>（更改镜像源）</p>
+</li>
+</ul>
 </li>
 <li><p><code>npm install -g hexo-cli</code>:有效</p>
 </li>
 </ul>
-<h4 id="1-3-安装依赖"><a href="#1-3-安装依赖" class="headerlink" title="1.3 安装依赖"></a>1.3 <del>安装依赖</del></h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">"hexo": "^4.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    "hexo-deployer-git": "^2.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    "hexo-generator-archive": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    "hexo-generator-category": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    "hexo-generator-index": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    "hexo-generator-search": "^2.4.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    "hexo-generator-searchdb": "^1.2.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    "hexo-generator-tag": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    "hexo-i18n": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    "hexo-renderer-ejs": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    "hexo-renderer-kramed": "^0.1.4",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    "hexo-renderer-stylus": "^1.1.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    "hexo-server": "^1.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    "hexo-symbols-count-time": "^0.7.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    "hexo-wordcount": "^6.0.1",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    "leancloud-storage": "^4.0.0",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    "valine": "^1.3.10"</span></pre></td></tr></table></figure>
-<p>语法：<code>npm install 依赖 --save</code></p>
-<p>示例<code>hexo-deployer-git</code></p>
-<h4 id="1-4-git"><a href="#1-4-git" class="headerlink" title="1.4 git"></a>1.4 git</h4><h4 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h4><p><code>hexo init &lt;folder&gt;</code></p>
-<p>拷贝</p>
+<h4 id="1-3-git"><a href="#1-3-git" class="headerlink" title="1.3 git"></a>1.3 git</h4><p>下载并安装git</p>
+<h4 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h4><p>拷贝原先的文件</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">_config.yml</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">package.json</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">scaffolds/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">source/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">themes/</span></pre></td></tr></table></figure>
 <p>安装</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">npm install</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">否则`hexo s`会失败</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">---------------</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">--------------</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"> npm install hexo-deployer-git --save</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"> npm install hexo-generator-feed --save</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"> npm install hexo-generator-sitemap --save</span></pre></td></tr></table></figure>
@@ -692,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-NodeJs"><span class="nav-text">1.1 NodeJs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-hexo或hexo-cli"><span class="nav-text">1.2 hexo或hexo-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-安装依赖"><span class="nav-text">1.3 安装依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-git"><span class="nav-text">1.4 git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-初始化"><span class="nav-text">1.5 初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-配置ssh"><span class="nav-text">1.6 配置ssh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-保存到github"><span class="nav-text">1.7 保存到github</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-NodeJs"><span class="nav-text">1.1 NodeJs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-hexo或hexo-cli"><span class="nav-text">1.2 hexo或hexo-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-git"><span class="nav-text">1.3 git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-初始化"><span class="nav-text">1.5 初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-配置ssh"><span class="nav-text">1.6 配置ssh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-保存到github"><span class="nav-text">1.7 保存到github</span></a></li></ol></div>
             
 
           </div>
