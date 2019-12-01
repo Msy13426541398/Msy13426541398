@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>have-a-secondary-computer-in-my-life</title>
+    <url>/have-a-secondary-computer-in-my-life/</url>
+    <content><![CDATA[<p>​    2016年3月，我购买了我的第一台笔记本电脑，三星的<a href="https://www.samsung.com/cn/pc/notebook-3-np370e4j-k06cn/" target="_blank" rel="noopener">Notebook 3 370E4J-K06</a>。虽然配置很一般，但对于我这种条件不好的人来说，还是非常有价值的。整整陪伴了我将近四年，陪伴了我近乎整个大学生涯。</p>
+<p>​    身为一个程序员，电脑配置不高带来了一个相当大的问题，就是一些集成开发环境Idea、Pycharm安装上去后加载过长，程序写完后编译运行也很慢，所以我有写代码的量上就与别人差了许多，间接导致我一定程度上对写代码的恐惧。于是，我就转战对电脑配置不高的领域学习，如</p>
+<ol>
+<li><p>远程到云服务器上的linux系统下学习linux知识</p>
+</li>
+<li><p>使用浏览器学习信息检索的知识</p>
+</li>
+<li><p>使用jupyter notebook这种记事本开发工具去编写爬虫程序。</p>
+</li>
+<li><p>在B站、腾讯课堂等一些教学网站上观看视频</p>
+</li>
+<li>练习五笔</li>
+<li>在如<a href="https://www.tutorialspoint.com" target="_blank" rel="noopener">tutorialspoint</a>学习一些知识概念</li>
+</ol>
+<p>​    <strong>现在</strong>,我的这台电脑即将‘退役’，换来一台新的电脑，配置更强很多的<a href="http://www.mi.com/mibook/pro15-zqb?cfrom=search" target="_blank" rel="noopener">小米Pro15增强版</a>，希望能将我学习的知识，加以实践，并反哺于自己的认识偏差中。</p>
+]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>computer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>connect-remote-through-putty</title>
+    <url>/connect-remote-through-putty/</url>
+    <content><![CDATA[<center>PuTTy远程连接云服务器
+</center>
+
+<p>​    原先是使用Xshell的ssh去连接云服务器的，但是由于Xshell不是免费版的，于是在网上搜索了一下支持ssh协议的免费软件，发现Putty可以连接。Putty虽然免费，但是如果不通过一些配置处理的话不能保存账号和密码，这对我这种比较希望能少做点就实现相同功能的人来说，实在不能忍。故记录一下配置的主要过程</p>
+<h4 id="1-下载Putty"><a href="#1-下载Putty" class="headerlink" title="1. 下载Putty"></a>1. 下载Putty</h4><p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">Putty下载地址</a>：根据自己电脑的系统选择，<code>.msi</code>是windows下的安装包</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>选择默认安装即可，最好是将安装路径不选择在系统盘</p>
+<h4 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h4><h5 id="3-1-生成rsa"><a href="#3-1-生成rsa" class="headerlink" title="3.1 生成rsa"></a>3.1 生成rsa</h5><p>安装路径根目录下找到<code>puttygen.exe</code>程序打开。</p>
+<p><img src="image-20191129110528161.png" alt="image-20191129110528161"></p>
+<ol>
+<li><code>Generate</code>：生成key</li>
+<li><code>Save public key</code>:保存公钥</li>
+<li><code>Save private key</code>:保存私钥</li>
+</ol>
+<h5 id="3-2-在服务器中配置rsa"><a href="#3-2-在服务器中配置rsa" class="headerlink" title="3.2 在服务器中配置rsa"></a>3.2 在服务器中配置rsa</h5><p>在putty.exe程序中进行如下图操作，之后输入命令<code>nano ~/.ssh/authorized_keys</code>进入nano程序，</p>
+<p><img src="image-20191129111451768.png" alt="image-20191129111451768"></p>
+<p>将3.1中第一步生成的key保存到里面，<kbd>ctrl</kbd>+<kbd>X</kbd>退出，选择Y(yes)即保存成功</p>
+<p><img src="image-20191129111745045.png" alt="image-20191129111745045"></p>
+<h5 id="3-3-配置PuTTy-configuration"><a href="#3-3-配置PuTTy-configuration" class="headerlink" title="3.3 配置PuTTy configuration"></a>3.3 配置PuTTy configuration</h5><ol>
+<li><p><img src="image-20191129112220218.png" alt="image-20191129112220218"></p>
+</li>
+<li></li>
+</ol>
+<p><img src="image-20191129112601519.png" alt="image-20191129112601519"></p>
+<ol>
+<li><p><img src="image-20191129112903836.png" alt="image-20191129112903836"></p>
+</li>
+<li><p>再次登录，即可以免账号和密码登录</p>
+<p><img src="image-20191129113000614.png" alt="image-20191129113000614"></p>
+</li>
+</ol>
+<p><strong>参考资料</strong></p>
+<p> 1.<a href="https://devanswers.co/putty-and-ssh-key-based-authentication/" target="_blank" rel="noopener">putty-and-ssh-key-based-authentication</a></p>
+<p>2.<a href="https://devanswers.co/putty-username-password-windows-shortcut/" target="_blank" rel="noopener">putty-username-password-windows-shortcut</a></p>
+]]></content>
+      <categories>
+        <category>programing</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习_逻辑回归</title>
+    <url>/maching-learning-about-logistic-regression/</url>
+    <content><![CDATA[<p><center>神经网络基础</center></p>
+<h3 id="2-2-逻辑回归"><a href="#2-2-逻辑回归" class="headerlink" title="2.2 逻辑回归"></a>2.2 逻辑回归</h3><p>Logistic Regression</p>
+<ul>
+<li><p>latex: <script type="math/tex"> </script> </p>
+</li>
+<li><p>符号 $$</p>
+</li>
+<li><p>y hat: y有上标</p>
+</li>
+<li><p>换行：\\</p>
+</li>
+<li><p>矩阵: matrix</p>
+</li>
+<li><p><a href="https://math-linux.com/latex-26/faq/latex-faq/article/how-to-get-dots-in-latex-ldots-cdots-vdots-and-ddots" target="_blank" rel="noopener">省略号</a></p>
+</li>
+<li><p><script type="math/tex">...</script> 可以插入行内公式，使用 $$$ … $$$ 可以插入行间公式 </p>
+</li>
+<li><p><a href="https://wikidiff.com/sigma/sigmoid" target="_blank" rel="noopener">sigma vs sigmoid</a></p>
+<ul>
+<li><p>sigmoid </p>
+<ul>
+<li><p>scope:$0\to1$</p>
+</li>
+<li><p>$\sigma(z)=\frac{1}{1+e^{-z}}$</p>
+<ul>
+<li>if $z\to\infty$ :$\sigma(z)\approx \frac{1}{1+0}=1 $</li>
+<li>if $z\to-\infty$:$\sigma(z)\approx \frac{1}{1+\infty}\approx 0$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="公式一："><a href="#公式一：" class="headerlink" title="公式一："></a>公式一：</h5><script type="math/tex; mode=display">
+x \rightarrow  \hat{y}=p(y=1|x)\\
+x\in R^{nx},b \in R\\
+Parameters: w\in  R^{nx}\\
+Output:\hat{y}= \sigma(w^tx+b)\\</script><h5 id="公式二："><a href="#公式二：" class="headerlink" title="公式二："></a>公式二：</h5><script type="math/tex; mode=display">
+x_0=1,x\in R^{n_{x+1}}\\
+\hat{y}=\sigma(\theta^Tx)\\
+\theta=\left[
+\begin{matrix}
+\theta_0\\
+\theta_1\\
+\theta_2\\
+\vdots\\
+\theta_{nx}
+\end{matrix}
+\right]</script><h4 id="2-3-代价函数"><a href="#2-3-代价函数" class="headerlink" title="2.3 代价函数"></a>2.3 代价函数</h4><p><code>Loss Function</code> or <code>Cost Function</code></p>
+<h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><script type="math/tex; mode=display">
+\hat{y} = \sigma(w^Tx+b),where \ \sigma(z)=\frac{1}{1+e^{-z}}\\
+\left\{
+\begin{matrix}
+(x^{(1)},y^{(1)}),\cdots,(x^{(m)},y^{(m)})\rightarrow \hat{y}^{(i)}\approx y^{(i)} 
+\end{matrix}
+\right\}      // i代表第几个数据</script><p><strong>损失函数</strong></p>
+<blockquote>
+<p>单个测试样本</p>
+</blockquote>
+<p>$L(\hat y ,y)=-(ylog \ \hat y+(1-y)log(1-\hat y))$</p>
+<ul>
+<li><p>$if \ y = 1: L(\hat y ,y)= -log\ \hat y \leftarrow want\  log\ \hat y \ large,want\ \hat y \ large$</p>
+</li>
+<li><p>$if \ y = 0: L(\hat y ,y)= -log (1- \hat y) \leftarrow want\ log (1- \hat y) \ large,want\ \hat y \ small$</p>
+</li>
+</ul>
+<p><strong>代价函数</strong></p>
+<blockquote>
+<p>基于参数的总成本 $w , b$</p>
+</blockquote>
+<script type="math/tex; mode=display">
+J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat y^{(i)}, y^{(i)})=-\frac{1}{m}\sum^m_{i=1}[y^{(i)}log \ \hat y^{(i)}+(1-y^{(i)})log(1-\hat y^{(i)})]</script><h4 id="2-4-梯度下降法"><a href="#2-4-梯度下降法" class="headerlink" title="2.4 梯度下降法"></a>2.4 梯度下降法</h4><p>Gradient Descent</p>
+<ul>
+<li><p>凸函数 凹函数</p>
+</li>
+<li><p>符号 导数 vs 偏导</p>
+<p>$d \ vs \ \partial$</p>
+</li>
+<li><p>全局最优 vs 局部最优 </p>
+</li>
+<li><p>textbook 教科书</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+want\ to \ find \ w,b \ that \ 最小化 J(w,b)\\
+J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat y^{(i)}, y^{(i)})=-\frac{1}{m}\sum^m_{i=1}[y^{(i)}log \ \hat y^{(i)}+(1-y^{(i)})log(1-\hat y^{(i)})]</script><script type="math/tex; mode=display">
+// \alpha学习率\ dw对w的变化率
+\\
+\begin{align*}
+repeat\{\\
+&w:w-\alpha\frac{dJ{(w)}}{d{w}}\\
+\}
+\end{align*}</script><h4 id="2-5-导数"><a href="#2-5-导数" class="headerlink" title="2.5 导数"></a>2.5 导数</h4><p>derivatives    物理上：slope 斜率（函数）</p>
+<h4 id="2-7-计算图"><a href="#2-7-计算图" class="headerlink" title="2.7 计算图"></a>2.7 计算图</h4><ul>
+<li>链式法则</li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>神经网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>how to install hexo and deploy it</title>
+    <url>/how-to-install-hexo-and-deploy-it/</url>
+    <content><![CDATA[<p>博客搭建</p>
+<h4 id="1-nodejs"><a href="#1-nodejs" class="headerlink" title="1.nodejs"></a>1.nodejs</h4><ul>
+<li>安装<a href="https://nodejs.org/dist/v12.13.0/node-v12.13.0-x64.msi" target="_blank" rel="noopener">nodejs</a></li>
+</ul>
+<h4 id="2-git"><a href="#2-git" class="headerlink" title="2.git"></a>2.git</h4><h4 id="3-github-io上部署hexo项目"><a href="#3-github-io上部署hexo项目" class="headerlink" title="3.github.io上部署hexo项目"></a>3.github.io上部署hexo项目</h4><h4 id="4-命令"><a href="#4-命令" class="headerlink" title="4.命令"></a>4.命令</h4><h5 id="4-1启动"><a href="#4-1启动" class="headerlink" title="4.1启动"></a>4.1启动</h5><ul>
+<li><code>npm install -g hexo-cli</code>: install hexo client </li>
+<li><code>hexo init</code>  empty_fold_name: create a default hexo project </li>
+<li><code>hexo server</code>: start hexo ,you can visit it through <a href="localhost:8080" target="_blank" rel="noopener">localhost:8080</a></li>
+</ul>
+<h5 id="4-2-创建并部署新文件"><a href="#4-2-创建并部署新文件" class="headerlink" title="4.2 创建并部署新文件"></a>4.2 创建并部署新文件</h5><h6 id="4-2-1-文件夹"><a href="#4-2-1-文件夹" class="headerlink" title="4.2.1 文件夹"></a>4.2.1 文件夹</h6><ul>
+<li>hexo new directory_name file_name</li>
+</ul>
+<h6 id="4-2-2-文件"><a href="#4-2-2-文件" class="headerlink" title="4.2.2 文件"></a>4.2.2 文件</h6><ul>
+<li><p><code>hexo new [layout] &lt;title&gt;</code></p>
+<ul>
+<li>layout:<ul>
+<li>post(default)</li>
+<li>page</li>
+<li>draft</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>  hexo new page —path about/me “About me”` :创建文件</p>
+</blockquote>
+</li>
+<li><p><code>hexo generate</code> 生成静态文件  : compile markdown file to html </p>
+</li>
+<li><p><code>hexo generate -d</code> 文件生成后部署: auto depoly to site you configured </p>
+</li>
+</ul>
+<h5 id="4-3-删除"><a href="#4-3-删除" class="headerlink" title="4.3 删除"></a>4.3 删除</h5><ul>
+<li>1.直接在_post文件夹下删除</li>
+<li>2 <code>hexo g</code>: 重新生成html文件</li>
+<li>3 <code>hexo d</code>: 部署,部署前先verify一下邮箱</li>
+</ul>
+<h4 id="5主题"><a href="#5主题" class="headerlink" title="5主题"></a>5主题</h4><ul>
+<li>使用git将主题下载到themes下</li>
+<li>主配置中将主题替换你所想要的</li>
+</ul>
+<h4 id="6-心得"><a href="#6-心得" class="headerlink" title="6.心得"></a>6.心得</h4><ul>
+<li><p>_post下的页面才会出现在主页的链接里</p>
+</li>
+<li><p>定义标签需要 创建tags（page）,并在md文件指定 type: tags</p>
+<ul>
+<li><p>其它文件归类时</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">tags:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">love</span></span></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>下载next主题</p>
+</li>
+</ul>
+<h4 id="7-其它"><a href="#7-其它" class="headerlink" title="7.其它"></a>7.其它</h4><h5 id="7-1-支持latex"><a href="#7-1-支持latex" class="headerlink" title="7.1 支持latex"></a>7.1 <a href="https://www.infiniteft.xyz/2018/03/21/make-hexo-support-latex/" target="_blank" rel="noopener">支持latex</a></h5><ul>
+<li><p>7.1.1 更换渲染器</p>
+<blockquote>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-renderer-marked --save</span></pre></td></tr><tr><td class="code"><pre><span class="line">$ npm install hexo-renderer-kramed --save</span></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>7.1.2 文章加引用</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span></pre></td></tr></table></figure>
+</li>
+<li><p>7.1.3 主题开启mathjax</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span>  </span></pre></td></tr><tr><td class="code"><pre><span class="line">	<span class="attr">enable:</span> <span class="literal">true</span></span></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+</search>
