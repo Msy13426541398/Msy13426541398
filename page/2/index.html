@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="tutorial," />
+  <meta name="keywords" content="技术在指尖绽放异彩" />
 
 
 
@@ -83,15 +83,14 @@
 
 
 
-<meta name="description" content="博客搭建 1.nodejs 安装nodejs  2.git3.github.io上部署hexo项目4.命令4.1启动 npm install -g hexo-cli: install hexo client  hexo init  empty_fold_name: create a default hexo project  hexo server: start hexo ,you can vis">
-<meta name="keywords" content="tutorial">
-<meta property="og:type" content="article">
-<meta property="og:title" content="how to install hexo and deploy it">
-<meta property="og:url" content="https:&#x2F;&#x2F;mengki258.github.io&#x2F;how-to-install-hexo-and-deploy-it&#x2F;index.html">
+<meta name="description" content="提升自我，放飞未来">
+<meta name="keywords" content="python,java,big data">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MengKi">
+<meta property="og:url" content="https:&#x2F;&#x2F;mengki258.github.io&#x2F;page&#x2F;2&#x2F;index.html">
 <meta property="og:site_name" content="MengKi">
-<meta property="og:description" content="博客搭建 1.nodejs 安装nodejs  2.git3.github.io上部署hexo项目4.命令4.1启动 npm install -g hexo-cli: install hexo client  hexo init  empty_fold_name: create a default hexo project  hexo server: start hexo ,you can vis">
+<meta property="og:description" content="提升自我，放飞未来">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-29T02:39:20.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://mengki258.github.io/how-to-install-hexo-and-deploy-it/"/>
+  <link rel="canonical" href="https://mengki258.github.io/page/2/"/>
 
 
 
 
 
-  <title>how to install hexo and deploy it | MengKi</title>
+  <title>MengKi - MengKi's Personal Website</title>
   
 
 
@@ -147,7 +146,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband">
 	
 	</div>
@@ -286,9 +286,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -318,7 +318,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">how to install hexo and deploy it</h2>
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/how-to-install-hexo-and-deploy-it/" itemprop="url">how to install hexo and deploy it</a></h2>
         
 
         <div class="post-meta">
@@ -432,73 +434,22 @@
       
 
       
-        <p>博客搭建</p>
-<h4 id="1-nodejs"><a href="#1-nodejs" class="headerlink" title="1.nodejs"></a>1.nodejs</h4><ul>
-<li>安装<a href="https://nodejs.org/dist/v12.13.0/node-v12.13.0-x64.msi" target="_blank" rel="noopener">nodejs</a></li>
-</ul>
-<h4 id="2-git"><a href="#2-git" class="headerlink" title="2.git"></a>2.git</h4><h4 id="3-github-io上部署hexo项目"><a href="#3-github-io上部署hexo项目" class="headerlink" title="3.github.io上部署hexo项目"></a>3.github.io上部署hexo项目</h4><h4 id="4-命令"><a href="#4-命令" class="headerlink" title="4.命令"></a>4.命令</h4><h5 id="4-1启动"><a href="#4-1启动" class="headerlink" title="4.1启动"></a>4.1启动</h5><ul>
-<li><code>npm install -g hexo-cli</code>: install hexo client </li>
-<li><code>hexo init</code>  empty_fold_name: create a default hexo project </li>
-<li><code>hexo server</code>: start hexo ,you can visit it through <a href="localhost:8080" target="_blank" rel="noopener">localhost:8080</a></li>
-</ul>
-<h5 id="4-2-创建并部署新文件"><a href="#4-2-创建并部署新文件" class="headerlink" title="4.2 创建并部署新文件"></a>4.2 创建并部署新文件</h5><h6 id="4-2-1-文件夹"><a href="#4-2-1-文件夹" class="headerlink" title="4.2.1 文件夹"></a>4.2.1 文件夹</h6><ul>
-<li>hexo new directory_name file_name</li>
-</ul>
-<h6 id="4-2-2-文件"><a href="#4-2-2-文件" class="headerlink" title="4.2.2 文件"></a>4.2.2 文件</h6><ul>
-<li><p><code>hexo new [layout] &lt;title&gt;</code></p>
-<ul>
-<li>layout:<ul>
-<li>post(default)</li>
-<li>page</li>
-<li>draft</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>  hexo new page —path about/me “About me”` :创建文件</p>
-</blockquote>
-</li>
-<li><p><code>hexo generate</code> 生成静态文件  : compile markdown file to html </p>
-</li>
-<li><p><code>hexo generate -d</code> 文件生成后部署: auto depoly to site you configured </p>
-</li>
-</ul>
-<h5 id="4-3-删除"><a href="#4-3-删除" class="headerlink" title="4.3 删除"></a>4.3 删除</h5><ul>
-<li>1.直接在_post文件夹下删除</li>
-<li>2 <code>hexo g</code>: 重新生成html文件</li>
-<li>3 <code>hexo d</code>: 部署,部署前先verify一下邮箱</li>
-</ul>
-<h4 id="5主题"><a href="#5主题" class="headerlink" title="5主题"></a>5主题</h4><ul>
-<li>使用git将主题下载到themes下</li>
-<li>主配置中将主题替换你所想要的</li>
-</ul>
-<h4 id="6-心得"><a href="#6-心得" class="headerlink" title="6.心得"></a>6.心得</h4><ul>
-<li><p>_post下的页面才会出现在主页的链接里</p>
-</li>
-<li><p>定义标签需要 创建tags（page）,并在md文件指定 type: tags</p>
-<ul>
-<li><p>其它文件归类时</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">love</span></span></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>下载next主题</p>
-</li>
-</ul>
-<h4 id="7-其它"><a href="#7-其它" class="headerlink" title="7.其它"></a>7.其它</h4><h5 id="7-1-支持latex"><a href="#7-1-支持latex" class="headerlink" title="7.1 支持latex"></a>7.1 <a href="https://www.infiniteft.xyz/2018/03/21/make-hexo-support-latex/" target="_blank" rel="noopener">支持latex</a></h5><ul>
-<li><p>7.1.1 更换渲染器</p>
-<blockquote>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ npm uninstall hexo-renderer-marked --save</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ npm install hexo-renderer-kramed --save</span></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>7.1.2 文章加引用</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span></pre></td></tr></table></figure>
-</li>
-<li><p>7.1.3 主题开启mathjax</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span>  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="attr">enable:</span> <span class="literal">true</span></span></pre></td></tr></table></figure>
-</li>
-</ul>
+        
+          
+          博客搭建
+1.nodejs
+安装nodejs
 
+2.git3
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/how-to-install-hexo-and-deploy-it/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -510,69 +461,17 @@
     
 
     
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    MengKi
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://mengki258.github.io/how-to-install-hexo-and-deploy-it/" title="how to install hexo and deploy it">https://mengki258.github.io/how-to-install-hexo-and-deploy-it/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
-    
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/tutorial/" rel="tag"># tutorial</a>
-          
-        </div>
+
+      
+
       
 
       
       
-        <div class="post-widgets">
-        
-          <div class="wp_rating">
-            <div id="wpac-rating"></div>
-          </div>
-        
-
-        
-
-        
-        </div>
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/maching-learning-about-logistic-regression/" rel="prev" title="机器学习_逻辑回归">
-                机器学习_逻辑回归 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -582,11 +481,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -594,13 +496,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -623,17 +518,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -707,22 +593,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-nodejs"><span class="nav-text">1.nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-git"><span class="nav-text">2.git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-github-io上部署hexo项目"><span class="nav-text">3.github.io上部署hexo项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-命令"><span class="nav-text">4.命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1启动"><span class="nav-text">4.1启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-创建并部署新文件"><span class="nav-text">4.2 创建并部署新文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-1-文件夹"><span class="nav-text">4.2.1 文件夹</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-2-文件"><span class="nav-text">4.2.2 文件</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-删除"><span class="nav-text">4.3 删除</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5主题"><span class="nav-text">5主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-心得"><span class="nav-text">6.心得</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-其它"><span class="nav-text">7.其它</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-支持latex"><span class="nav-text">7.1 支持latex</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -866,10 +736,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -1371,23 +1237,6 @@
 
   
   
-  <script type="text/javascript">
-  wpac_init = window.wpac_init || [];
-  wpac_init.push({widget: 'Rating', id: ,
-    el: 'wpac-rating',
-    color: 'fc6423'
-  });
-  (function() {
-    if ('WIDGETPACK_LOADED' in window) return;
-    WIDGETPACK_LOADED = true;
-    var mc = document.createElement('script');
-    mc.type = 'text/javascript';
-    mc.async = true;
-    mc.src = '//embed.widgetpack.com/widget.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-  })();
-  </script>
-
 
   
   

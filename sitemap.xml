@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://mengki258.github.io/install-jdk-tomcat-in-centos/</loc>
+    
+    <lastmod>2019-12-09T12:57:03.146Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://mengki258.github.io/maching-learning-about-logistic-regression/</loc>
+    
+    <lastmod>2019-12-05T08:46:06.619Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://mengki258.github.io/hexo-migrate-to-new-computer/</loc>
     
     <lastmod>2019-12-01T07:02:11.139Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>https://mengki258.github.io/about/index.html</loc>
     
     <lastmod>2019-11-27T17:31:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://mengki258.github.io/maching-learning-about-logistic-regression/</loc>
-    
-    <lastmod>2019-11-27T13:13:12.000Z</lastmod>
     
   </url>
   

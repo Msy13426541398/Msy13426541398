@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>install-jdk-tomcat-in-centos</title>
+    <url>/install-jdk-tomcat-in-centos/</url>
+    <content><![CDATA[<h4 id="1-安装jdk和tomcat"><a href="#1-安装jdk和tomcat" class="headerlink" title="1.安装jdk和tomcat"></a>1.安装jdk和tomcat</h4><ul>
+<li>命令下载并解压<ul>
+<li>待续。。。</li>
+</ul>
+</li>
+<li>目录<ul>
+<li><code>vim /etc/profile</code>:环境变量</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2 配置"></a>2 配置</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置java环境</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/java</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">#配置jre_home</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span></pre></td></tr><tr><td class="code"><pre><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span></pre></td></tr><tr><td class="code"><pre><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># tomcathome</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">export CATALINA_HOME=/usr/local/apache-tomcat8</span></pre></td></tr><tr><td class="code"><pre><span class="line">export PATH=$CATALINA_HOME/bin:$PATH</span></pre></td></tr></table></figure>
+<h4 id="3-命令"><a href="#3-命令" class="headerlink" title="3 命令"></a>3 命令</h4><ul>
+<li><code>cd</code>:切换目录</li>
+<li><code>pwd</code>：打印所在路径</li>
+<li>vim 目录：<ul>
+<li>i:编辑</li>
+<li><kbd>ESC</kbd>:退出</li>
+<li>wq!:保存后退出</li>
+<li>q!：不保存退出</li>
+</ul>
+</li>
+<li><p>下载工具</p>
+<ul>
+<li>rpm</li>
+<li>wget</li>
+<li>yum</li>
+</ul>
+</li>
+<li><p>添加软连接</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>jdk</tag>
+        <tag>tomcat</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客迁移到新电脑</title>
     <url>/hexo-migrate-to-new-computer/</url>
     <content><![CDATA[<h4 id="1-1-NodeJs"><a href="#1-1-NodeJs" class="headerlink" title="1.1 NodeJs"></a>1.1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">NodeJs</a></h4><ul>
