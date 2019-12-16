@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="技术在指尖绽放异彩" />
+  <meta name="keywords" content="centos,ftp," />
 
 
 
@@ -83,14 +83,15 @@
 
 
 
-<meta name="description" content="提升自我，放飞未来">
-<meta name="keywords" content="python,java,big data">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MengKi">
-<meta property="og:url" content="https:&#x2F;&#x2F;mengki258.github.io&#x2F;index.html">
+<meta name="description" content="使用vsftpd作为文件服务器 1.准备工作1.安装  yum install vsftpd -y 卸载软件 yum remove vsftpd -y 2.加入防火墙 iptables -F 3.查看iptables的使用情况 firewall-cmd --list-all 4.添加ftp到规则 firewall-cmd --add-service&#x3D;ftp --permanent 5.重启防火墙规">
+<meta name="keywords" content="centos,ftp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install-ftp-server-in-centos">
+<meta property="og:url" content="https:&#x2F;&#x2F;mengki258.github.io&#x2F;install-ftp-server-in-centos&#x2F;index.html">
 <meta property="og:site_name" content="MengKi">
-<meta property="og:description" content="提升自我，放飞未来">
+<meta property="og:description" content="使用vsftpd作为文件服务器 1.准备工作1.安装  yum install vsftpd -y 卸载软件 yum remove vsftpd -y 2.加入防火墙 iptables -F 3.查看iptables的使用情况 firewall-cmd --list-all 4.添加ftp到规则 firewall-cmd --add-service&#x3D;ftp --permanent 5.重启防火墙规">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-16T15:45:21.115Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://mengki258.github.io/"/>
+  <link rel="canonical" href="https://mengki258.github.io/install-ftp-server-in-centos/"/>
 
 
 
 
 
-  <title>MengKi - MengKi's Personal Website</title>
+  <title>install-ftp-server-in-centos | MengKi</title>
   
 
 
@@ -146,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
 	
 	</div>
@@ -286,9 +286,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -318,9 +318,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/install-ftp-server-in-centos/" itemprop="url">install-ftp-server-in-centos</a></h2>
+          <h2 class="post-title" itemprop="name headline">install-ftp-server-in-centos</h2>
         
 
         <div class="post-meta">
@@ -456,20 +454,55 @@
       
 
       
-        
-          
-          使用vsftpd作为文件服务器
-1.准备工作1.安装 
-yu
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/install-ftp-server-in-centos/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p><strong>使用vsftpd作为文件服务器</strong></p>
+<h4 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h4><p>1.安装 </p>
+<p><code>yum install vsftpd -y</code></p>
+<p>卸载软件</p>
+<p><code>yum remove vsftpd -y</code></p>
+<p>2.加入防火墙</p>
+<p><code>iptables -F</code></p>
+<p>3.查看iptables的使用情况</p>
+<p><code>firewall-cmd --list-all</code></p>
+<p>4.添加ftp到规则</p>
+<p><code>firewall-cmd --add-service=ftp --permanent</code></p>
+<p>5.重启防火墙规则</p>
+<p><code>firewall-cmd --reload</code></p>
+<p>必须做，否则等下启动ftp服务器会报错</p>
+<p>6.使用3的命令查看是否添加成功</p>
+<h4 id="2-登录"><a href="#2-登录" class="headerlink" title="2.登录"></a>2.登录</h4><h5 id="匿名"><a href="#匿名" class="headerlink" title="匿名"></a>匿名</h5><p>1.<code>mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf_bak</code></p>
+<p><code>grep -v &quot;#&quot; /etc/vsftpd/vsftpd.conf_bak &gt; /etc/vsftpd/vsftpd.conf</code></p>
+<blockquote>
+<p>将conf文件备份到bak中，再通过-v过滤掉注释的行#，将内容写入到conf文件</p>
+</blockquote>
+<p>2.添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">anon_umask&#x3D;022</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">anon_upload_enable&#x3D;YES</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">anon_mkdir_write_enable&#x3D;YES</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">anon_ohter_write_enable&#x3D;YES</span></pre></td></tr></table></figure>
+<p>3.保存退出 </p>
+<p>重启vsftpd服务<code>systemctl restart vsftpd</code></p>
+<p>使下次也生效<code>systemctl enable vsftpd</code></p>
+<h5 id="本地用户"><a href="#本地用户" class="headerlink" title="本地用户"></a>本地用户</h5><p>1.<code>anonymous_enable=NO</code></p>
+<p>2.注释掉匿名的配置</p>
+<p>3.重启服务</p>
+<p>4.添加用户</p>
+<p>​    <code>useradd -g ftp mengki</code></p>
+<p>​    中级密码</p>
+<h4 id="3-修改匿名目录权限"><a href="#3-修改匿名目录权限" class="headerlink" title="3.修改匿名目录权限"></a>3.修改匿名目录权限</h4><p><code>chown -Rf ftp /var/ftp/pub</code></p>
+<h4 id="4-编辑SELinux域策略"><a href="#4-编辑SELinux域策略" class="headerlink" title="4.编辑SELinux域策略"></a>4.编辑SELinux域策略</h4><p>4.1查看SELinux中有关FTP的设置状态： <code>getsebool -a | grep ftp</code></p>
+<p>4.2开启访问权限： <code>setsebool -P ftpd_full_access=on</code></p>
+<p>4.3重启服务器 <code>reboot</code>生效</p>
+<h4 id="5-安装客户端"><a href="#5-安装客户端" class="headerlink" title="5.安装客户端"></a>5.安装客户端</h4><p><code>yum install ftp -y</code></p>
+<p>匿名账号：anonymous  密码为空</p>
+<p>进入ftp后</p>
+<p><code>cd</code>切换目录</p>
+<p><code>mkdir</code>创建文件夹</p>
+<p><code>ls -ld</code>查看</p>
+<p><code>exit</code>退出</p>
+<h4 id="6-window登录"><a href="#6-window登录" class="headerlink" title="6.window登录"></a>6.window登录</h4><p>1.地址栏输入<code>ftp://ip</code></p>
+<ol>
+<li>输入本地用户中配置的账号和密码</li>
+</ol>
+<p>参考文档</p>
+<p>1.<a href="https://www.toutiao.com/a6458983660245746190/" target="_blank" rel="noopener">centos 7 中搭建vsftpd 服务器</a></p>
+
       
     </div>
     
@@ -481,637 +514,71 @@ yu
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    MengKi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://mengki258.github.io/install-ftp-server-in-centos/" title="install-ftp-server-in-centos">https://mengki258.github.io/install-ftp-server-in-centos/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mengki258.github.io/install-jdk-tomcat-in-centos/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MengKi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/%E6%A2%A6%E5%A5%87.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MengKi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/install-jdk-tomcat-in-centos/" itemprop="url">install-jdk-tomcat-in-centos</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T20:34:47+08:00">
-                2019-12-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T09:24:03+08:00">
-                2019-12-10
-              </time>
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DevOps/" itemprop="url" rel="index">
-                    <span itemprop="name">DevOps</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/centos/" rel="tag"># centos</a>
           
-
+            <a href="/tags/ftp/" rel="tag"># ftp</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/install-jdk-tomcat-in-centos/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/install-jdk-tomcat-in-centos/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/install-jdk-tomcat-in-centos/" class="leancloud_visitors" data-flag-title="install-jdk-tomcat-in-centos">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  121
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
+      
+        <div class="post-widgets">
         
-          
-          1.安装jdk和tomcat
-命令下载并解压
-待续。。。
-
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/install-jdk-tomcat-in-centos/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mengki258.github.io/hexo-migrate-to-new-computer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MengKi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/%E6%A2%A6%E5%A5%87.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MengKi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo-migrate-to-new-computer/" itemprop="url">博客迁移到新电脑</a></h2>
         
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T14:40:17+08:00">
-                2019-12-01
-              </time>
-            
+        
 
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-01T15:02:11+08:00">
-                2019-12-01
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/hexo-migrate-to-new-computer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-migrate-to-new-computer/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/hexo-migrate-to-new-computer/" class="leancloud_visitors" data-flag-title="博客迁移到新电脑">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  213
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
+        
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
       
       
 
       
-        
-          
-          1.1 NodeJs
-1 下载安装 
-2 查看是否安装成功：
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexo-migrate-to-new-computer/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/install-jdk-tomcat-in-centos/" rel="next" title="install-jdk-tomcat-in-centos">
+                <i class="fa fa-chevron-left"></i> install-jdk-tomcat-in-centos
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mengki258.github.io/have-a-secondary-computer-in-my-life/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MengKi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/%E6%A2%A6%E5%A5%87.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MengKi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/have-a-secondary-computer-in-my-life/" itemprop="url">have-a-secondary-computer-in-my-life</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T09:57:09+08:00">
-                2019-11-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-30T10:19:50+08:00">
-                2019-11-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index">
-                    <span itemprop="name">life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/have-a-secondary-computer-in-my-life/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/have-a-secondary-computer-in-my-life/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/have-a-secondary-computer-in-my-life/" class="leancloud_visitors" data-flag-title="have-a-secondary-computer-in-my-life">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  330
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          ​    2016年3月，我购买了我的第一台笔记本电脑，三星
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/have-a-secondary-computer-in-my-life/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1121,229 +588,11 @@ yu
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mengki258.github.io/connect-remote-through-putty/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MengKi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/%E6%A2%A6%E5%A5%87.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MengKi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/connect-remote-through-putty/" itemprop="url">connect-remote-through-putty</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-29T10:39:08+08:00">
-                2019-11-29
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-29T11:42:14+08:00">
-                2019-11-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programing/" itemprop="url" rel="index">
-                    <span itemprop="name">programing</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/connect-remote-through-putty/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/connect-remote-through-putty/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/connect-remote-through-putty/" class="leancloud_visitors" data-flag-title="connect-remote-through-putty">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  326
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          PuTTy远程连接云服务器
-
-
-​    原先是使用Xshe
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/connect-remote-through-putty/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
-  </nav>
-
 
 
           </div>
@@ -1351,6 +600,13 @@ yu
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -1373,8 +629,17 @@ yu
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1448,6 +713,22 @@ yu
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-准备工作"><span class="nav-text">1.准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-登录"><span class="nav-text">2.登录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#匿名"><span class="nav-text">匿名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本地用户"><span class="nav-text">本地用户</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-修改匿名目录权限"><span class="nav-text">3.修改匿名目录权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-编辑SELinux域策略"><span class="nav-text">4.编辑SELinux域策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-安装客户端"><span class="nav-text">5.安装客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-window登录"><span class="nav-text">6.window登录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1591,6 +872,10 @@ yu
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2092,6 +1377,23 @@ yu
 
   
   
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
 
   
   
