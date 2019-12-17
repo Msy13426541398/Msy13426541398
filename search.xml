@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>import-eclipse-project-to-idea</title>
+    <url>/import-eclipse-project-to-idea/</url>
+    <content><![CDATA[<h3 id="1-导入项目"><a href="#1-导入项目" class="headerlink" title="1.导入项目"></a>1.导入项目</h3><p><code>file</code>-&gt;<code>new</code>-&gt;<code>project from existed source</code></p>
+<p>选择<code>eclipse项目</code>，其它步骤默认即可</p>
+<h3 id="2-配置项目"><a href="#2-配置项目" class="headerlink" title="2. 配置项目"></a>2. 配置项目</h3><p>打开右上角的<code>project setting</code></p>
+<h4 id="2-1-project"><a href="#2-1-project" class="headerlink" title="2.1 project"></a>2.1 project</h4><p>一般不会错，注意一下jdk的版本与开发项目的版本是否一致即可</p>
+<h4 id="2-2-modules"><a href="#2-2-modules" class="headerlink" title="2.2 modules"></a>2.2 modules</h4><p>​    <kbd>+</kbd> ,添加<code>web</code>,文件选择<code>WebContent</code>-&gt;<code>WEB-INF</code>-&gt;<code>web.xml</code>。同时<code>Web Resource</code>中选中<code>WebContent</code>的路径-<font color="red">注意</font>不能是<code>web</code></p>
+<h4 id="2-3-libraries"><a href="#2-3-libraries" class="headerlink" title="2.3  libraries"></a>2.3  libraries</h4><p><kbd>+</kbd>,添加<code>java</code>,将<code>lib</code>下的jar包和引用的jar包引入 </p>
+<h4 id="2-4-artifacts"><a href="#2-4-artifacts" class="headerlink" title="2.4  artifacts"></a>2.4  artifacts</h4><p><kbd>+</kbd>,添加<code>web</code>,选中在2.2模块中配置好的<strong>Module</strong></p>
+<h4 id="2-5-artifcats"><a href="#2-5-artifcats" class="headerlink" title="2.5 artifcats"></a>2.5 artifcats</h4><p><kbd>+</kbd>,添加<code>Web Applicaton:exploaded</code>或者<code>Web Application:archive</code>中任选一个，<code>module</code>从2.2中配置中的选择</p>
+<h4 id="3-tomcat启动"><a href="#3-tomcat启动" class="headerlink" title="3. tomcat启动"></a>3. tomcat启动</h4><p>参考：</p>
+<p><a href="https://www.toutiao.com/a6475624815771255309/" target="_blank" rel="noopener">1.在IntelliJ IDEA中导入eclipse项目并成功运行</a></p>
+]]></content>
+      <tags>
+        <tag>idea</tag>
+        <tag>eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>install-ftp-server-in-centos</title>
     <url>/install-ftp-server-in-centos/</url>
     <content><![CDATA[<p><strong>使用vsftpd作为文件服务器</strong></p>
