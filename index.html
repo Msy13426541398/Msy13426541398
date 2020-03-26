@@ -101,7 +101,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":15,"b2t":false,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"left","display":"always","width":300,"offset":15,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -140,7 +140,10 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <link rel="stylesheet" href="../source/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="../source/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="../source/dist/music.js"></script>
   
   
     
@@ -358,16 +361,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/import-eclipse-project-to-idea/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/import-eclipse-project-to-idea/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -569,16 +562,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/install-ftp-server-in-centos/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/install-ftp-server-in-centos/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -784,16 +767,6 @@ yu
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/install-jdk-tomcat-in-centos/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/install-jdk-tomcat-in-centos/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -977,16 +950,6 @@ yu
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/hexo-migrate-to-new-computer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-migrate-to-new-computer/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -1192,16 +1155,6 @@ yu
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/have-a-secondary-computer-in-my-life/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/have-a-secondary-computer-in-my-life/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1316,7 +1269,7 @@ yu
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
   </nav>
 
 
@@ -1409,6 +1362,12 @@ yu
                         <i class="fa fa-fw fa-github"></i></a>
                   </span>
                 
+                  <span class="links-of-author-item">
+                    <a href="1710620635@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
             </div>
           
 
@@ -1426,7 +1385,7 @@ yu
       
 
       
-
+   
     </div>
   </aside>
 
@@ -1437,7 +1396,7 @@ yu
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1604,28 +1563,6 @@ yu
 
 
 
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: '7LILfu6eGXhgqrPNiju89BW6-gzGzoHsz',
-        appKey: 'xundpWHrEvpIzD4erRrkz9fu',
-        placeholder: '说你想说的 | Say what you want to say',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'4' || 10,
-    });
-  </script>
 
 
 
