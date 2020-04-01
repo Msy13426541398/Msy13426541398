@@ -1,429 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>import-eclipse-project-to-idea</title>
-    <url>/import-eclipse-project-to-idea/</url>
-    <content><![CDATA[<h3 id="1-导入项目"><a href="#1-导入项目" class="headerlink" title="1.导入项目"></a>1.导入项目</h3><p><code>file</code>-&gt;<code>new</code>-&gt;<code>project from existed source</code></p>
-<p>选择<code>eclipse项目</code>，其它步骤默认即可</p>
-<h3 id="2-配置项目"><a href="#2-配置项目" class="headerlink" title="2. 配置项目"></a>2. 配置项目</h3><p>打开右上角的<code>project setting</code></p>
-<h4 id="2-1-project"><a href="#2-1-project" class="headerlink" title="2.1 project"></a>2.1 project</h4><p>一般不会错，注意一下jdk的版本与开发项目的版本是否一致即可</p>
-<h4 id="2-2-modules"><a href="#2-2-modules" class="headerlink" title="2.2 modules"></a>2.2 modules</h4><p>​    <kbd>+</kbd> ,添加<code>web</code>,文件选择<code>WebContent</code>-&gt;<code>WEB-INF</code>-&gt;<code>web.xml</code>。同时<code>Web Resource</code>中选中<code>WebContent</code>的路径-<font color="red">注意</font>不能是<code>web</code></p>
-<h4 id="2-3-libraries"><a href="#2-3-libraries" class="headerlink" title="2.3  libraries"></a>2.3  libraries</h4><p><kbd>+</kbd>,添加<code>java</code>,将<code>lib</code>下的jar包和引用的jar包引入 </p>
-<h4 id="2-4-artifacts"><a href="#2-4-artifacts" class="headerlink" title="2.4  artifacts"></a>2.4  artifacts</h4><p><kbd>+</kbd>,添加<code>web</code>,选中在2.2模块中配置好的<strong>Module</strong></p>
-<h4 id="2-5-artifcats"><a href="#2-5-artifcats" class="headerlink" title="2.5 artifcats"></a>2.5 artifcats</h4><p><kbd>+</kbd>,添加<code>Web Applicaton:exploaded</code>或者<code>Web Application:archive</code>中任选一个，<code>module</code>从2.2中配置中的选择</p>
-<h4 id="3-tomcat启动"><a href="#3-tomcat启动" class="headerlink" title="3. tomcat启动"></a>3. tomcat启动</h4><p>参考：</p>
-<p><a href="https://www.toutiao.com/a6475624815771255309/" target="_blank" rel="noopener">1.在IntelliJ IDEA中导入eclipse项目并成功运行</a></p>
-]]></content>
-      <tags>
-        <tag>idea</tag>
-        <tag>eclipse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>install-ftp-server-in-centos</title>
-    <url>/install-ftp-server-in-centos/</url>
-    <content><![CDATA[<p><strong>使用vsftpd作为文件服务器</strong></p>
-<h4 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h4><p>1.安装 </p>
-<p><code>yum install vsftpd -y</code></p>
-<p>卸载软件</p>
-<p><code>yum remove vsftpd -y</code></p>
-<p>2.加入防火墙</p>
-<p><code>iptables -F</code></p>
-<p>3.查看iptables的使用情况</p>
-<p><code>firewall-cmd --list-all</code></p>
-<p>4.添加ftp到规则</p>
-<p><code>firewall-cmd --add-service=ftp --permanent</code></p>
-<p>5.重启防火墙规则</p>
-<p><code>firewall-cmd --reload</code></p>
-<p>必须做，否则等下启动ftp服务器会报错</p>
-<p>6.使用3的命令查看是否添加成功</p>
-<h4 id="2-登录"><a href="#2-登录" class="headerlink" title="2.登录"></a>2.登录</h4><h5 id="匿名"><a href="#匿名" class="headerlink" title="匿名"></a>匿名</h5><p>1.<code>mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf_bak</code></p>
-<p><code>grep -v &quot;#&quot; /etc/vsftpd/vsftpd.conf_bak &gt; /etc/vsftpd/vsftpd.conf</code></p>
-<blockquote>
-<p>将conf文件备份到bak中，再通过-v过滤掉注释的行#，将内容写入到conf文件</p>
-</blockquote>
-<p>2.添加</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">anon_umask&#x3D;022</span></pre></td></tr><tr><td class="code"><pre><span class="line">anon_upload_enable&#x3D;YES</span></pre></td></tr><tr><td class="code"><pre><span class="line">anon_mkdir_write_enable&#x3D;YES</span></pre></td></tr><tr><td class="code"><pre><span class="line">anon_ohter_write_enable&#x3D;YES</span></pre></td></tr></table></figure>
-<p>3.保存退出 </p>
-<p>重启vsftpd服务<code>systemctl restart vsftpd</code></p>
-<p>使下次也生效<code>systemctl enable vsftpd</code></p>
-<h5 id="本地用户"><a href="#本地用户" class="headerlink" title="本地用户"></a>本地用户</h5><p>1.<code>anonymous_enable=NO</code></p>
-<p>2.注释掉匿名的配置</p>
-<p>3.重启服务</p>
-<p>4.添加用户</p>
-<p>​    <code>useradd -g ftp mengki</code></p>
-<p>​    中级密码</p>
-<h4 id="3-修改匿名目录权限"><a href="#3-修改匿名目录权限" class="headerlink" title="3.修改匿名目录权限"></a>3.修改匿名目录权限</h4><p><code>chown -Rf ftp /var/ftp/pub</code></p>
-<h4 id="4-编辑SELinux域策略"><a href="#4-编辑SELinux域策略" class="headerlink" title="4.编辑SELinux域策略"></a>4.编辑SELinux域策略</h4><p>4.1查看SELinux中有关FTP的设置状态： <code>getsebool -a | grep ftp</code></p>
-<p>4.2开启访问权限： <code>setsebool -P ftpd_full_access=on</code></p>
-<p>4.3重启服务器 <code>reboot</code>生效</p>
-<h4 id="5-安装客户端"><a href="#5-安装客户端" class="headerlink" title="5.安装客户端"></a>5.安装客户端</h4><p><code>yum install ftp -y</code></p>
-<p>匿名账号：anonymous  密码为空</p>
-<p>进入ftp后</p>
-<p><code>cd</code>切换目录</p>
-<p><code>mkdir</code>创建文件夹</p>
-<p><code>ls -ld</code>查看</p>
-<p><code>exit</code>退出</p>
-<h4 id="6-window登录"><a href="#6-window登录" class="headerlink" title="6.window登录"></a>6.window登录</h4><p>1.地址栏输入<code>ftp://ip</code></p>
-<ol>
-<li>输入本地用户中配置的账号和密码</li>
-</ol>
-<p>参考文档</p>
-<p>1.<a href="https://www.toutiao.com/a6458983660245746190/" target="_blank" rel="noopener">centos 7 中搭建vsftpd 服务器</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>&#39;tomcat-introduction&#39;</title>
+      <link href="/tomcat-introduction/"/>
+      <url>/tomcat-introduction/</url>
+      
+        <content type="html"><![CDATA[<h1 style="text-align:center">Tomcat介绍</h1><h3 id="1-startup-bat"><a href="#1-startup-bat" class="headerlink" title="1 startup.bat"></a>1 startup.bat</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">::注解说明</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">rem Guess CATALINA_HOME if not defined</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> "CURRENT_DIR=<span class="variable">%cd%</span>"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">:: 若不存在CATALINA_HOME就跳转到goHome标签处</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> "<span class="variable">%CATALINA_HOME%</span>" == "" <span class="keyword">goto</span> gotHome</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> "CATALINA_HOME=<span class="variable">%CURRENT_DIR%</span>"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">:: 若存在CATALINA_HOME就跳转到okHome标签处</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">exist</span> "<span class="variable">%CATALINA_HOME%</span>\bin\catalina.bat" <span class="keyword">goto</span> okHome</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">:: 切换到tomcat的根目录，并将CATALINA_HOME设置成根目录路径</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> "CATALINA_HOME=<span class="variable">%cd%</span>"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> "<span class="variable">%CURRENT_DIR%</span>"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">:gotHome</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">exist</span> "<span class="variable">%CATALINA_HOME%</span>\bin\catalina.bat" <span class="keyword">goto</span> okHome</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> The CATALINA_HOME environment variable is <span class="keyword">not</span> <span class="keyword">defined</span> correctly</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> This environment variable is needed to run this program</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> end</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">:okHome</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">:: 将catalina所在路径赋予EXECUTABLE变量</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> "EXECUTABLE=<span class="variable">%CATALINA_HOME%</span>\bin\catalina.bat"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="comment">rem Check that target executable exists</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">exist</span> "<span class="variable">%EXECUTABLE%</span>" <span class="keyword">goto</span> okExec</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> Cannot <span class="built_in">find</span> "<span class="variable">%EXECUTABLE%</span>"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> This file is needed to run this program</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> end</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">:okExec</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"><span class="comment">rem Get remaining unshifted command line arguments and save them in the</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> CMD_LINE_ARGS=</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">:setArgs</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ""%<span class="number">1</span>""=="""" <span class="keyword">goto</span> doneSetArgs</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> CMD_LINE_ARGS=<span class="variable">%CMD_LINE_ARGS%</span> %<span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">shift</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> setArgs</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">:doneSetArgs</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> "<span class="variable">%EXECUTABLE%</span>" <span class="built_in">start</span> <span class="variable">%CMD_LINE_ARGS%</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">:end</span></pre></td></tr></table></figure><p>总结： 当CATALINA_HOME不存在时，会根据startup.bat文件路径上级作为tomcat的根路径并赋予CATALINA_HOME，之后便定位使用。所以，当要布署多个tomcat时，最好不要在环境变量里面设置tomcat的</p><p>CATALINA_HOME值</p><ul><li>stop.bat 同startup.bat</li><li>catalina.bat 同startup.bat</li></ul><p>我们可以显式指定tomcat相关命令所在路径</p><ul><li><h4 id="startup-bat"><a href="#startup-bat" class="headerlink" title="startup.bat"></a>startup.bat</h4></li></ul><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> CATALINA_HOME=C:\tomcatServer</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> CATALINA_BASE=C:\tomcatInstanceOne</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">tomcatServer</span>\<span class="title">bin</span>\<span class="title">startup.bat</span></span></span></pre></td></tr></table></figure><h3 id="2-布署多个tomcat实例"><a href="#2-布署多个tomcat实例" class="headerlink" title="2. 布署多个tomcat实例"></a>2. 布署多个tomcat实例</h3><p><code>**conf\server.xml**</code></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务器 shutdown端口设置--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">   <span class="comment">&lt;!--监听器--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">  <span class="comment">&lt;!--全局名称空间资源配置--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="tag">              <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="tag">              <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="tag">              <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="tag">              <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">   <span class="comment">&lt;!--服务--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">     <span class="comment">&lt;!--http协议--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="tag">               <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="tag">               <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">     <span class="comment">&lt;!--AJP协议：Apache JServ Protocol--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--引擎名： 在tomcat加载过程中会使用--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--存储了资源与访问信息--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="tag">               <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--主机： web应用所放位置--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span>  <span class="attr">appBase</span>=<span class="string">"webapps"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"><span class="tag">            <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"><span class="tag">               <span class="attr">prefix</span>=<span class="string">"localhost_access_log"</span> <span class="attr">suffix</span>=<span class="string">".txt"</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"><span class="tag">               <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></span></pre></td></tr></table></figure><p>下图是server中的server service engine host context的关系 ，及连接时所用的协议原理图</p><p><img src="TomcatArchitecture.png" alt="Advanced Tutorial on Tomcat 7"></p><p>所要更改的选项</p><ul><li>shutdown </li><li>protocal<ul><li>http</li><li>ajp</li></ul></li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>/&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> tomcat </tag>
+            
+            <tag> deploy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>import-eclipse-project-to-idea</title>
+      <link href="/import-eclipse-project-to-idea/"/>
+      <url>/import-eclipse-project-to-idea/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-导入项目"><a href="#1-导入项目" class="headerlink" title="1.导入项目"></a>1.导入项目</h3><p><code>file</code>-&gt;<code>new</code>-&gt;<code>project from existed source</code></p><p>选择<code>eclipse项目</code>，其它步骤默认即可</p><h3 id="2-配置项目"><a href="#2-配置项目" class="headerlink" title="2. 配置项目"></a>2. 配置项目</h3><p>打开右上角的<code>project setting</code></p><h4 id="2-1-project"><a href="#2-1-project" class="headerlink" title="2.1 project"></a>2.1 project</h4><p>一般不会错，注意一下jdk的版本与开发项目的版本是否一致即可</p><h4 id="2-2-modules"><a href="#2-2-modules" class="headerlink" title="2.2 modules"></a>2.2 modules</h4><p>​    <kbd>+</kbd> ,添加<code>web</code>,文件选择<code>WebContent</code>-&gt;<code>WEB-INF</code>-&gt;<code>web.xml</code>。同时<code>Web Resource</code>中选中<code>WebContent</code>的路径-<font color="red">注意</font>不能是<code>web</code></p><h4 id="2-3-libraries"><a href="#2-3-libraries" class="headerlink" title="2.3  libraries"></a>2.3  libraries</h4><p><kbd>+</kbd>,添加<code>java</code>,将<code>lib</code>下的jar包和引用的jar包引入 </p><h4 id="2-4-artifacts"><a href="#2-4-artifacts" class="headerlink" title="2.4  artifacts"></a>2.4  artifacts</h4><p><kbd>+</kbd>,添加<code>web</code>,选中在2.2模块中配置好的<strong>Module</strong></p><h4 id="2-5-artifcats"><a href="#2-5-artifcats" class="headerlink" title="2.5 artifcats"></a>2.5 artifcats</h4><p><kbd>+</kbd>,添加<code>Web Applicaton:exploaded</code>或者<code>Web Application:archive</code>中任选一个，<code>module</code>从2.2中配置中的选择</p><h4 id="3-tomcat启动"><a href="#3-tomcat启动" class="headerlink" title="3. tomcat启动"></a>3. tomcat启动</h4><p>参考：</p><p><a href="https://www.toutiao.com/a6475624815771255309/" target="_blank" rel="noopener">1.在IntelliJ IDEA中导入eclipse项目并成功运行</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> idea </tag>
+            
+            <tag> eclipse </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>install-ftp-server-in-centos</title>
+      <link href="/install-ftp-server-in-centos/"/>
+      <url>/install-ftp-server-in-centos/</url>
+      
+        <content type="html"><![CDATA[<p><strong>使用vsftpd作为文件服务器</strong></p><h4 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h4><p>1.安装 </p><p><code>yum install vsftpd -y</code></p><p>卸载软件</p><p><code>yum remove vsftpd -y</code></p><p>2.加入防火墙</p><p><code>iptables -F</code></p><p>3.查看iptables的使用情况</p><p><code>firewall-cmd --list-all</code></p><p>4.添加ftp到规则</p><p><code>firewall-cmd --add-service=ftp --permanent</code></p><p>5.重启防火墙规则</p><p><code>firewall-cmd --reload</code></p><p>必须做，否则等下启动ftp服务器会报错</p><p>6.使用3的命令查看是否添加成功</p><h4 id="2-登录"><a href="#2-登录" class="headerlink" title="2.登录"></a>2.登录</h4><h5 id="匿名"><a href="#匿名" class="headerlink" title="匿名"></a>匿名</h5><p>1.<code>mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf_bak</code></p><p><code>grep -v &quot;#&quot; /etc/vsftpd/vsftpd.conf_bak &gt; /etc/vsftpd/vsftpd.conf</code></p><blockquote><p>将conf文件备份到bak中，再通过-v过滤掉注释的行#，将内容写入到conf文件</p></blockquote><p>2.添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">anon_umask&#x3D;022</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">anon_upload_enable&#x3D;YES</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">anon_mkdir_write_enable&#x3D;YES</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">anon_ohter_write_enable&#x3D;YES</span></pre></td></tr></table></figure><p>3.保存退出 </p><p>重启vsftpd服务<code>systemctl restart vsftpd</code></p><p>使下次也生效<code>systemctl enable vsftpd</code></p><h5 id="本地用户"><a href="#本地用户" class="headerlink" title="本地用户"></a>本地用户</h5><p>1.<code>anonymous_enable=NO</code></p><p>2.注释掉匿名的配置</p><p>3.重启服务</p><p>4.添加用户</p><p>​    <code>useradd -g ftp mengki</code></p><p>​    中级密码</p><h4 id="3-修改匿名目录权限"><a href="#3-修改匿名目录权限" class="headerlink" title="3.修改匿名目录权限"></a>3.修改匿名目录权限</h4><p><code>chown -Rf ftp /var/ftp/pub</code></p><h4 id="4-编辑SELinux域策略"><a href="#4-编辑SELinux域策略" class="headerlink" title="4.编辑SELinux域策略"></a>4.编辑SELinux域策略</h4><p>4.1查看SELinux中有关FTP的设置状态： <code>getsebool -a | grep ftp</code></p><p>4.2开启访问权限： <code>setsebool -P ftpd_full_access=on</code></p><p>4.3重启服务器 <code>reboot</code>生效</p><h4 id="5-安装客户端"><a href="#5-安装客户端" class="headerlink" title="5.安装客户端"></a>5.安装客户端</h4><p><code>yum install ftp -y</code></p><p>匿名账号：anonymous  密码为空</p><p>进入ftp后</p><p><code>cd</code>切换目录</p><p><code>mkdir</code>创建文件夹</p><p><code>ls -ld</code>查看</p><p><code>exit</code>退出</p><h4 id="6-window登录"><a href="#6-window登录" class="headerlink" title="6.window登录"></a>6.window登录</h4><p>1.地址栏输入<code>ftp://ip</code></p><ol><li>输入本地用户中配置的账号和密码</li></ol><p>参考文档</p><p>1.<a href="https://www.toutiao.com/a6458983660245746190/" target="_blank" rel="noopener">centos 7 中搭建vsftpd 服务器</a></p>]]></content>
+      
+      
       <categories>
-        <category>linux</category>
+          
+          <category> linux </category>
+          
       </categories>
-      <tags>
-        <tag>centos</tag>
-        <tag>ftp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>install-jdk-tomcat-in-centos</title>
-    <url>/install-jdk-tomcat-in-centos/</url>
-    <content><![CDATA[<h4 id="1-安装jdk和tomcat"><a href="#1-安装jdk和tomcat" class="headerlink" title="1.安装jdk和tomcat"></a>1.安装jdk和tomcat</h4><ul>
-<li>命令下载并解压<ul>
-<li>待续。。。</li>
-</ul>
-</li>
-<li>目录<ul>
-<li><code>vim /etc/profile</code>:环境变量</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2 配置"></a>2 配置</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置java环境</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/java</span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment">#配置jre_home</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span></pre></td></tr><tr><td class="code"><pre><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span></pre></td></tr><tr><td class="code"><pre><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="comment"># tomcathome</span></span></pre></td></tr><tr><td class="code"><pre><span class="line">export CATALINA_HOME=/usr/local/apache-tomcat8</span></pre></td></tr><tr><td class="code"><pre><span class="line">export PATH=$CATALINA_HOME/bin:$PATH</span></pre></td></tr></table></figure>
-<h4 id="3-命令"><a href="#3-命令" class="headerlink" title="3 命令"></a>3 命令</h4><ul>
-<li><code>cd</code>:切换目录</li>
-<li><code>pwd</code>：打印所在路径</li>
-<li>vim 目录：<ul>
-<li>i:编辑</li>
-<li><kbd>ESC</kbd>:退出</li>
-<li>wq!:保存后退出</li>
-<li>q!：不保存退出</li>
-</ul>
-</li>
-<li><p>下载工具</p>
-<ul>
-<li>rpm</li>
-<li>wget</li>
-<li>yum</li>
-</ul>
-</li>
-<li><p>添加软连接</p>
-</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> centos </tag>
+            
+            <tag> ftp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>install-jdk-tomcat-in-centos</title>
+      <link href="/install-jdk-tomcat-in-centos/"/>
+      <url>/install-jdk-tomcat-in-centos/</url>
+      
+        <content type="html"><![CDATA[<h4 id="1-安装jdk和tomcat"><a href="#1-安装jdk和tomcat" class="headerlink" title="1.安装jdk和tomcat"></a>1.安装jdk和tomcat</h4><ul><li>命令下载并解压<ul><li>待续。。。</li></ul></li><li>目录<ul><li><code>vim /etc/profile</code>:环境变量</li></ul></li></ul><h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2 配置"></a>2 配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置java环境</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/java</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置jre_home</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># tomcathome</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">export CATALINA_HOME=/usr/local/apache-tomcat8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">export PATH=$CATALINA_HOME/bin:$PATH</span></pre></td></tr></table></figure><h4 id="3-命令"><a href="#3-命令" class="headerlink" title="3 命令"></a>3 命令</h4><ul><li><code>cd</code>:切换目录</li><li><code>pwd</code>：打印所在路径</li><li>vim 目录：<ul><li>i:编辑</li><li><kbd>ESC</kbd>:退出</li><li>wq!:保存后退出</li><li>q!：不保存退出</li></ul></li><li><p>下载工具</p><ul><li>rpm</li><li>wget</li><li>yum</li></ul></li><li><p>添加软连接</p></li></ul>]]></content>
+      
+      
       <categories>
-        <category>DevOps</category>
+          
+          <category> DevOps </category>
+          
       </categories>
-      <tags>
-        <tag>jdk</tag>
-        <tag>tomcat</tag>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客迁移到新电脑</title>
-    <url>/hexo-migrate-to-new-computer/</url>
-    <content><![CDATA[<h4 id="1-1-NodeJs"><a href="#1-1-NodeJs" class="headerlink" title="1.1 NodeJs"></a>1.1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">NodeJs</a></h4><ul>
-<li>1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">下载安装</a> </li>
-<li>2 查看是否安装成功：添加到环境变量；node —version：输出版本号</li>
-</ul>
-<h4 id="1-2-hexo或hexo-cli"><a href="#1-2-hexo或hexo-cli" class="headerlink" title="1.2 hexo或hexo-cli"></a>1.2 hexo或hexo-cli</h4><ul>
-<li><p><code>npm install -g hexo</code></p>
-<ul>
-<li><p>失败   nodejs版本要求 &gt;8</p>
-</li>
-<li><p>解析错误：<code>npm set registry https://registry.npmjs.org/</code>（更改镜像源）</p>
-</li>
-</ul>
-</li>
-<li><p><code>npm install -g hexo-cli</code>:有效</p>
-</li>
-</ul>
-<h4 id="1-3-git"><a href="#1-3-git" class="headerlink" title="1.3 git"></a>1.3 git</h4><p>下载并安装git</p>
-<h4 id="1-4-初始化"><a href="#1-4-初始化" class="headerlink" title="1.4 初始化"></a>1.4 初始化</h4><p>拷贝原先的文件</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">_config.yml</span></pre></td></tr><tr><td class="code"><pre><span class="line">package.json</span></pre></td></tr><tr><td class="code"><pre><span class="line">scaffolds/</span></pre></td></tr><tr><td class="code"><pre><span class="line">source/</span></pre></td></tr><tr><td class="code"><pre><span class="line">themes/</span></pre></td></tr></table></figure>
-<p>安装</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">npm install</span></pre></td></tr><tr><td class="code"><pre><span class="line">否则`hexo s`会失败</span></pre></td></tr><tr><td class="code"><pre><span class="line">---------------</span></pre></td></tr><tr><td class="code"><pre><span class="line">npm install -g hexo</span></pre></td></tr><tr><td class="code"><pre><span class="line">--------------</span></pre></td></tr><tr><td class="code"><pre><span class="line"> npm install hexo-deployer-git --save</span></pre></td></tr><tr><td class="code"><pre><span class="line"> npm install hexo-generator-feed --save</span></pre></td></tr><tr><td class="code"><pre><span class="line"> npm install hexo-generator-sitemap --save</span></pre></td></tr></table></figure>
-<h4 id="1-5-配置ssh"><a href="#1-5-配置ssh" class="headerlink" title="1.5 配置ssh"></a>1.5 配置ssh</h4><p>免密操作：</p>
-<ul>
-<li><p>1 <code>git config --global user.name &quot;mengki258&quot;</code></p>
-</li>
-<li><p>2 <code>git config --global user.email &quot;1710620635@qq.com&quot;</code></p>
-</li>
-<li><p>3 <code>ssh-keygen -t rsa -C &quot;1710620635@qq.com&quot;</code></p>
-<ul>
-<li><p>输入密码：password</p>
-</li>
-<li><p>保存位置</p>
-<blockquote>
-<p>认证信息： C:\Users{username}/.ssh/id_rsa.</p>
-<p>公钥：C:\Users{username}/.ssh/id_rsa.pub.</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>添加公钥到github的ssh上</p>
-</li>
-</ul>
-<h4 id="1-6-保存到github"><a href="#1-6-保存到github" class="headerlink" title="1.6 保存到github"></a>1.6 保存到github</h4><p><code>hexo d</code></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>have-a-secondary-computer-in-my-life</title>
-    <url>/have-a-secondary-computer-in-my-life/</url>
-    <content><![CDATA[<p>​    2016年3月，我购买了我的第一台笔记本电脑，三星的<a href="https://www.samsung.com/cn/pc/notebook-3-np370e4j-k06cn/" target="_blank" rel="noopener">Notebook 3 370E4J-K06</a>。虽然配置很一般，但对于我这种条件不好的人来说，还是非常有价值的。整整陪伴了我将近四年，陪伴了我近乎整个大学生涯。</p>
-<p>​    身为一个程序员，电脑配置不高带来了一个相当大的问题，就是一些集成开发环境Idea、Pycharm安装上去后加载过长，程序写完后编译运行也很慢，所以我有写代码的量上就与别人差了许多，间接导致我一定程度上对写代码的恐惧。于是，我就转战对电脑配置不高的领域学习，如</p>
-<ol>
-<li><p>远程到云服务器上的linux系统下学习linux知识</p>
-</li>
-<li><p>使用浏览器学习信息检索的知识</p>
-</li>
-<li><p>使用jupyter notebook这种记事本开发工具去编写爬虫程序。</p>
-</li>
-<li><p>在B站、腾讯课堂等一些教学网站上观看视频</p>
-</li>
-<li>练习五笔</li>
-<li>在如<a href="https://www.tutorialspoint.com" target="_blank" rel="noopener">tutorialspoint</a>学习一些知识概念</li>
-</ol>
-<p>​    <strong>现在</strong>,我的这台电脑即将‘退役’，换来一台新的电脑，配置更强很多的<a href="http://www.mi.com/mibook/pro15-zqb?cfrom=search" target="_blank" rel="noopener">小米Pro15增强版</a>，希望能将我学习的知识，加以实践，并反哺于自己的认识偏差中。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> tomcat </tag>
+            
+            <tag> jdk </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客迁移到新电脑</title>
+      <link href="/hexo-migrate-to-new-computer/"/>
+      <url>/hexo-migrate-to-new-computer/</url>
+      
+        <content type="html"><![CDATA[<h4 id="1-1-NodeJs"><a href="#1-1-NodeJs" class="headerlink" title="1.1 NodeJs"></a>1.1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">NodeJs</a></h4><ul><li>1 <a href="https://nodejs.org/dist/v12.13.1/node-v12.13.1-x64.msi" target="_blank" rel="noopener">下载安装</a> </li><li>2 查看是否安装成功：添加到环境变量；node —version：输出版本号</li></ul><h4 id="1-2-hexo或hexo-cli"><a href="#1-2-hexo或hexo-cli" class="headerlink" title="1.2 hexo或hexo-cli"></a>1.2 hexo或hexo-cli</h4><ul><li><p><code>npm install -g hexo</code></p><ul><li><p>失败   nodejs版本要求 &gt;8</p></li><li><p>解析错误：<code>npm set registry https://registry.npmjs.org/</code>（更改镜像源）</p></li></ul></li><li><p><code>npm install -g hexo-cli</code>:有效</p></li></ul><h4 id="1-3-git"><a href="#1-3-git" class="headerlink" title="1.3 git"></a>1.3 git</h4><p>下载并安装git</p><h4 id="1-4-初始化"><a href="#1-4-初始化" class="headerlink" title="1.4 初始化"></a>1.4 初始化</h4><p>拷贝原先的文件</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">_config.yml</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">package.json</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">scaffolds/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">source/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">themes/</span></pre></td></tr></table></figure><p>安装</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">npm install</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">否则`hexo s`会失败</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">---------------</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">--------------</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"> npm install hexo-deployer-git --save</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"> npm install hexo-generator-feed --save</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"> npm install hexo-generator-sitemap --save</span></pre></td></tr></table></figure><h4 id="1-5-配置ssh"><a href="#1-5-配置ssh" class="headerlink" title="1.5 配置ssh"></a>1.5 配置ssh</h4><p>免密操作：</p><ul><li><p>1 <code>git config --global user.name &quot;mengki258&quot;</code></p></li><li><p>2 <code>git config --global user.email &quot;1710620635@qq.com&quot;</code></p></li><li><p>3 <code>ssh-keygen -t rsa -C &quot;1710620635@qq.com&quot;</code></p><ul><li><p>输入密码：password</p></li><li><p>保存位置</p><blockquote><p>认证信息： C:\Users{username}/.ssh/id_rsa.</p><p>公钥：C:\Users{username}/.ssh/id_rsa.pub.</p></blockquote></li></ul></li><li><p>添加公钥到github的ssh上</p></li></ul><h4 id="1-6-保存到github"><a href="#1-6-保存到github" class="headerlink" title="1.6 保存到github"></a>1.6 保存到github</h4><p><code>hexo d</code></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>have-a-secondary-computer-in-my-life</title>
+      <link href="/have-a-secondary-computer-in-my-life/"/>
+      <url>/have-a-secondary-computer-in-my-life/</url>
+      
+        <content type="html"><![CDATA[<p>​    2016年3月，我购买了我的第一台笔记本电脑，三星的<a href="https://www.samsung.com/cn/pc/notebook-3-np370e4j-k06cn/" target="_blank" rel="noopener">Notebook 3 370E4J-K06</a>。虽然配置很一般，但对于我这种条件不好的人来说，还是非常有价值的。整整陪伴了我将近四年，陪伴了我近乎整个大学生涯。</p><p>​    身为一个程序员，电脑配置不高带来了一个相当大的问题，就是一些集成开发环境Idea、Pycharm安装上去后加载过长，程序写完后编译运行也很慢，所以我有写代码的量上就与别人差了许多，间接导致我一定程度上对写代码的恐惧。于是，我就转战对电脑配置不高的领域学习，如</p><ol><li><p>远程到云服务器上的linux系统下学习linux知识</p></li><li><p>使用浏览器学习信息检索的知识</p></li><li><p>使用jupyter notebook这种记事本开发工具去编写爬虫程序。</p></li><li><p>在B站、腾讯课堂等一些教学网站上观看视频</p></li><li>练习五笔</li><li>在如<a href="https://www.tutorialspoint.com" target="_blank" rel="noopener">tutorialspoint</a>学习一些知识概念</li></ol><p>​    <strong>现在</strong>,我的这台电脑即将‘退役’，换来一台新的电脑，配置更强很多的<a href="http://www.mi.com/mibook/pro15-zqb?cfrom=search" target="_blank" rel="noopener">小米Pro15增强版</a>，希望能将我学习的知识，加以实践，并反哺于自己的认识偏差中。</p>]]></content>
+      
+      
       <categories>
-        <category>life</category>
+          
+          <category> life </category>
+          
       </categories>
-      <tags>
-        <tag>computer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>connect-remote-through-putty</title>
-    <url>/connect-remote-through-putty/</url>
-    <content><![CDATA[<center>PuTTy远程连接云服务器
-</center>
-
-<p>​    原先是使用Xshell的ssh去连接云服务器的，但是由于Xshell不是免费版的，于是在网上搜索了一下支持ssh协议的免费软件，发现Putty可以连接。Putty虽然免费，但是如果不通过一些配置处理的话不能保存账号和密码，这对我这种比较希望能少做点就实现相同功能的人来说，实在不能忍。故记录一下配置的主要过程</p>
-<h4 id="1-下载Putty"><a href="#1-下载Putty" class="headerlink" title="1. 下载Putty"></a>1. 下载Putty</h4><p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">Putty下载地址</a>：根据自己电脑的系统选择，<code>.msi</code>是windows下的安装包</p>
-<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>选择默认安装即可，最好是将安装路径不选择在系统盘</p>
-<h4 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h4><h5 id="3-1-生成rsa"><a href="#3-1-生成rsa" class="headerlink" title="3.1 生成rsa"></a>3.1 生成rsa</h5><p>安装路径根目录下找到<code>puttygen.exe</code>程序打开。</p>
-<p><img src="image-20191129110528161.png" alt="image-20191129110528161"></p>
-<ol>
-<li><code>Generate</code>：生成key</li>
-<li><code>Save public key</code>:保存公钥</li>
-<li><code>Save private key</code>:保存私钥</li>
-</ol>
-<h5 id="3-2-在服务器中配置rsa"><a href="#3-2-在服务器中配置rsa" class="headerlink" title="3.2 在服务器中配置rsa"></a>3.2 在服务器中配置rsa</h5><p>在putty.exe程序中进行如下图操作，之后输入命令<code>nano ~/.ssh/authorized_keys</code>进入nano程序，</p>
-<p><img src="image-20191129111451768.png" alt="image-20191129111451768"></p>
-<p>将3.1中第一步生成的key保存到里面，<kbd>ctrl</kbd>+<kbd>X</kbd>退出，选择Y(yes)即保存成功</p>
-<p><img src="image-20191129111745045.png" alt="image-20191129111745045"></p>
-<h5 id="3-3-配置PuTTy-configuration"><a href="#3-3-配置PuTTy-configuration" class="headerlink" title="3.3 配置PuTTy configuration"></a>3.3 配置PuTTy configuration</h5><ol>
-<li><p><img src="image-20191129112220218.png" alt="image-20191129112220218"></p>
-</li>
-<li></li>
-</ol>
-<p><img src="image-20191129112601519.png" alt="image-20191129112601519"></p>
-<ol>
-<li><p><img src="image-20191129112903836.png" alt="image-20191129112903836"></p>
-</li>
-<li><p>再次登录，即可以免账号和密码登录</p>
-<p><img src="image-20191129113000614.png" alt="image-20191129113000614"></p>
-</li>
-</ol>
-<p><strong>参考资料</strong></p>
-<p> 1.<a href="https://devanswers.co/putty-and-ssh-key-based-authentication/" target="_blank" rel="noopener">putty-and-ssh-key-based-authentication</a></p>
-<p>2.<a href="https://devanswers.co/putty-username-password-windows-shortcut/" target="_blank" rel="noopener">putty-username-password-windows-shortcut</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> computer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>connect-remote-through-putty</title>
+      <link href="/connect-remote-through-putty/"/>
+      <url>/connect-remote-through-putty/</url>
+      
+        <content type="html"><![CDATA[<center>PuTTy远程连接云服务器</center><p>​    原先是使用Xshell的ssh去连接云服务器的，但是由于Xshell不是免费版的，于是在网上搜索了一下支持ssh协议的免费软件，发现Putty可以连接。Putty虽然免费，但是如果不通过一些配置处理的话不能保存账号和密码，这对我这种比较希望能少做点就实现相同功能的人来说，实在不能忍。故记录一下配置的主要过程</p><h4 id="1-下载Putty"><a href="#1-下载Putty" class="headerlink" title="1. 下载Putty"></a>1. 下载Putty</h4><p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">Putty下载地址</a>：根据自己电脑的系统选择，<code>.msi</code>是windows下的安装包</p><h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>选择默认安装即可，最好是将安装路径不选择在系统盘</p><h4 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h4><h5 id="3-1-生成rsa"><a href="#3-1-生成rsa" class="headerlink" title="3.1 生成rsa"></a>3.1 生成rsa</h5><p>安装路径根目录下找到<code>puttygen.exe</code>程序打开。</p><p><img src="image-20191129110528161.png" alt="image-20191129110528161"></p><ol><li><code>Generate</code>：生成key</li><li><code>Save public key</code>:保存公钥</li><li><code>Save private key</code>:保存私钥</li></ol><h5 id="3-2-在服务器中配置rsa"><a href="#3-2-在服务器中配置rsa" class="headerlink" title="3.2 在服务器中配置rsa"></a>3.2 在服务器中配置rsa</h5><p>在putty.exe程序中进行如下图操作，之后输入命令<code>nano ~/.ssh/authorized_keys</code>进入nano程序，</p><p><img src="image-20191129111451768.png" alt="image-20191129111451768"></p><p>将3.1中第一步生成的key保存到里面，<kbd>ctrl</kbd>+<kbd>X</kbd>退出，选择Y(yes)即保存成功</p><p><img src="image-20191129111745045.png" alt="image-20191129111745045"></p><h5 id="3-3-配置PuTTy-configuration"><a href="#3-3-配置PuTTy-configuration" class="headerlink" title="3.3 配置PuTTy configuration"></a>3.3 配置PuTTy configuration</h5><ol><li><p><img src="image-20191129112220218.png" alt="image-20191129112220218"></p></li><li></li></ol><p><img src="image-20191129112601519.png" alt="image-20191129112601519"></p><ol><li><p><img src="image-20191129112903836.png" alt="image-20191129112903836"></p></li><li><p>再次登录，即可以免账号和密码登录</p><p><img src="image-20191129113000614.png" alt="image-20191129113000614"></p></li></ol><p><strong>参考资料</strong></p><p> 1.<a href="https://devanswers.co/putty-and-ssh-key-based-authentication/" target="_blank" rel="noopener">putty-and-ssh-key-based-authentication</a></p><p>2.<a href="https://devanswers.co/putty-username-password-windows-shortcut/" target="_blank" rel="noopener">putty-username-password-windows-shortcut</a></p>]]></content>
+      
+      
       <categories>
-        <category>programing</category>
+          
+          <category> programing </category>
+          
       </categories>
-      <tags>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习_逻辑回归</title>
-    <url>/maching-learning-about-logistic-regression/</url>
-    <content><![CDATA[<p><center>神经网络基础</center></p>
-<h3 id="2-2-逻辑回归"><a href="#2-2-逻辑回归" class="headerlink" title="2.2 逻辑回归"></a>2.2 逻辑回归</h3><p>Logistic Regression</p>
-<ul>
-<li><p>latex: <script type="math/tex"> </script> </p>
-</li>
-<li><p>符号 $$</p>
-</li>
-<li><p>y hat: y有上标</p>
-</li>
-<li><p>换行：\\</p>
-</li>
-<li><p>矩阵: matrix</p>
-</li>
-<li><p><a href="https://math-linux.com/latex-26/faq/latex-faq/article/how-to-get-dots-in-latex-ldots-cdots-vdots-and-ddots" target="_blank" rel="noopener">省略号</a></p>
-</li>
-<li><p><script type="math/tex">...</script> 可以插入行内公式，使用 $$$ … $$$ 可以插入行间公式 </p>
-</li>
-<li><p><a href="https://wikidiff.com/sigma/sigmoid" target="_blank" rel="noopener">sigma vs sigmoid</a></p>
-<ul>
-<li><p>sigmoid </p>
-<ul>
-<li><p>scope:$0\to1$</p>
-</li>
-<li><p>$\sigma(z)=\frac{1}{1+e^{-z}}$</p>
-<ul>
-<li>if $z\to\infty$ :$\sigma(z)\approx \frac{1}{1+0}=1 $</li>
-<li>if $z\to-\infty$:$\sigma(z)\approx \frac{1}{1+\infty}\approx 0$</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="公式一："><a href="#公式一：" class="headerlink" title="公式一："></a>公式一：</h5><script type="math/tex; mode=display">
-x \rightarrow  \hat{y}=p(y=1|x)\\
-x\in R^{nx},b \in R\\
-Parameters: w\in  R^{nx}\\
-Output:\hat{y}= \sigma(w^tx+b)\\</script><h5 id="公式二："><a href="#公式二：" class="headerlink" title="公式二："></a>公式二：</h5><script type="math/tex; mode=display">
-x_0=1,x\in R^{n_{x+1}}\\
-\hat{y}=\sigma(\theta^Tx)\\
-\theta=\left[
-\begin{matrix}
-\theta_0\\
-\theta_1\\
-\theta_2\\
-\vdots\\
-\theta_{nx}
-\end{matrix}
-\right]</script><h4 id="2-3-代价函数"><a href="#2-3-代价函数" class="headerlink" title="2.3 代价函数"></a>2.3 代价函数</h4><p><code>Loss Function</code> or <code>Cost Function</code></p>
-<h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><script type="math/tex; mode=display">
-\hat{y} = \sigma(w^Tx+b),where \ \sigma(z)=\frac{1}{1+e^{-z}}\\
-\left\{
-\begin{matrix}
-(x^{(1)},y^{(1)}),\cdots,(x^{(m)},y^{(m)})\rightarrow \hat{y}^{(i)}\approx y^{(i)} 
-\end{matrix}
-\right\}      // i代表第几个数据</script><p><strong>损失函数</strong></p>
-<blockquote>
-<p>单个测试样本</p>
-</blockquote>
-<p>$L(\hat y ,y)=-(ylog \ \hat y+(1-y)log(1-\hat y))$</p>
-<ul>
-<li><p>$if \ y = 1: L(\hat y ,y)= -log\ \hat y \leftarrow want\  log\ \hat y \ large,want\ \hat y \ large$</p>
-</li>
-<li><p>$if \ y = 0: L(\hat y ,y)= -log (1- \hat y) \leftarrow want\ log (1- \hat y) \ large,want\ \hat y \ small$</p>
-</li>
-</ul>
-<p><strong>代价函数</strong></p>
-<blockquote>
-<p>基于参数的总成本 $w , b$</p>
-</blockquote>
-<script type="math/tex; mode=display">
-J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat y^{(i)}, y^{(i)})=-\frac{1}{m}\sum^m_{i=1}[y^{(i)}log \ \hat y^{(i)}+(1-y^{(i)})log(1-\hat y^{(i)})]</script><h4 id="2-4-梯度下降法"><a href="#2-4-梯度下降法" class="headerlink" title="2.4 梯度下降法"></a>2.4 梯度下降法</h4><p>Gradient Descent</p>
-<ul>
-<li><p>凸函数 凹函数</p>
-</li>
-<li><p>符号 导数 vs 偏导</p>
-<p>$d \ vs \ \partial$</p>
-</li>
-<li><p>全局最优 vs 局部最优 </p>
-</li>
-<li><p>textbook 教科书</p>
-</li>
-</ul>
-<script type="math/tex; mode=display">
-want\ to \ find \ w,b \ that \ 最小化 J(w,b)\\
-J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat y^{(i)}, y^{(i)})=-\frac{1}{m}\sum^m_{i=1}[y^{(i)}log \ \hat y^{(i)}+(1-y^{(i)})log(1-\hat y^{(i)})]</script><script type="math/tex; mode=display">
-// \alpha学习率\ dw对w的变化率
-\\
-\begin{align*}
-repeat\{\\
-&w:w-\alpha\frac{dJ{(w)}}{d{w}}\\
-\}
-\end{align*}</script><h4 id="2-5-导数"><a href="#2-5-导数" class="headerlink" title="2.5 导数"></a>2.5 导数</h4><p>derivatives    物理上：slope 斜率（函数）</p>
-<h4 id="2-7-计算图"><a href="#2-7-计算图" class="headerlink" title="2.7 计算图"></a>2.7 计算图</h4><ul>
-<li>链式法则</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> ssh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>机器学习_逻辑回归</title>
+      <link href="/maching-learning-about-logistic-regression/"/>
+      <url>/maching-learning-about-logistic-regression/</url>
+      
+        <content type="html"><![CDATA[<p><center>神经网络基础</center></p><h3 id="2-2-逻辑回归"><a href="#2-2-逻辑回归" class="headerlink" title="2.2 逻辑回归"></a>2.2 逻辑回归</h3><p>Logistic Regression</p><ul><li><p>latex: <script type="math/tex"> </script> </p></li><li><p>符号 $$</p></li><li><p>y hat: y有上标</p></li><li><p>换行：\\</p></li><li><p>矩阵: matrix</p></li><li><p><a href="https://math-linux.com/latex-26/faq/latex-faq/article/how-to-get-dots-in-latex-ldots-cdots-vdots-and-ddots" target="_blank" rel="noopener">省略号</a></p></li><li><p><script type="math/tex">...</script> 可以插入行内公式，使用 $$$ … $$$ 可以插入行间公式 </p></li><li><p><a href="https://wikidiff.com/sigma/sigmoid" target="_blank" rel="noopener">sigma vs sigmoid</a></p><ul><li><p>sigmoid </p><ul><li><p>scope:$0\to1$</p></li><li><p>$\sigma(z)=\frac{1}{1+e^{-z}}$</p><ul><li>if $z\to\infty$ :$\sigma(z)\approx \frac{1}{1+0}=1 $</li><li>if $z\to-\infty$:$\sigma(z)\approx \frac{1}{1+\infty}\approx 0$</li></ul></li></ul></li></ul></li></ul><h5 id="公式一："><a href="#公式一：" class="headerlink" title="公式一："></a>公式一：</h5><script type="math/tex; mode=display">x \rightarrow  \hat{y}=p(y=1|x)\\x\in R^{nx},b \in R\\Parameters: w\in  R^{nx}\\Output:\hat{y}= \sigma(w^tx+b)\\</script><h5 id="公式二："><a href="#公式二：" class="headerlink" title="公式二："></a>公式二：</h5><script type="math/tex; mode=display">x_0=1,x\in R^{n_{x+1}}\\\hat{y}=\sigma(\theta^Tx)\\\theta=\left[\begin{matrix}\theta_0\\\theta_1\\\theta_2\\\vdots\\\theta_{nx}\end{matrix}\right]</script><h4 id="2-3-代价函数"><a href="#2-3-代价函数" class="headerlink" title="2.3 代价函数"></a>2.3 代价函数</h4><p><code>Loss Function</code> or <code>Cost Function</code></p><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><script type="math/tex; mode=display">\hat{y} = \sigma(w^Tx+b),where \ \sigma(z)=\frac{1}{1+e^{-z}}\\\left\{\begin{matrix}(x^{(1)},y^{(1)}),\cdots,(x^{(m)},y^{(m)})\rightarrow \hat{y}^{(i)}\approx y^{(i)} \end{matrix}\right\}      // i代表第几个数据</script><p><strong>损失函数</strong></p><blockquote><p>单个测试样本</p></blockquote><p>$L(\hat y ,y)=-(ylog \ \hat y+(1-y)log(1-\hat y))$</p><ul><li><p>$if \ y = 1: L(\hat y ,y)= -log\ \hat y \leftarrow want\  log\ \hat y \ large,want\ \hat y \ large$</p></li><li><p>$if \ y = 0: L(\hat y ,y)= -log (1- \hat y) \leftarrow want\ log (1- \hat y) \ large,want\ \hat y \ small$</p></li></ul><p><strong>代价函数</strong></p><blockquote><p>基于参数的总成本 $w , b$</p></blockquote><script type="math/tex; mode=display">J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat y^{(i)}, y^{(i)})=-\frac{1}{m}\sum^m_{i=1}[y^{(i)}log \ \hat y^{(i)}+(1-y^{(i)})log(1-\hat y^{(i)})]</script><h4 id="2-4-梯度下降法"><a href="#2-4-梯度下降法" class="headerlink" title="2.4 梯度下降法"></a>2.4 梯度下降法</h4><p>Gradient Descent</p><ul><li><p>凸函数 凹函数</p></li><li><p>符号 导数 vs 偏导</p><p>$d \ vs \ \partial$</p></li><li><p>全局最优 vs 局部最优 </p></li><li><p>textbook 教科书</p></li></ul><script type="math/tex; mode=display">want\ to \ find \ w,b \ that \ 最小化 J(w,b)\\J(w,b)=\frac{1}{m}\sum_{i=1}^mL(\hat y^{(i)}, y^{(i)})=-\frac{1}{m}\sum^m_{i=1}[y^{(i)}log \ \hat y^{(i)}+(1-y^{(i)})log(1-\hat y^{(i)})]</script><script type="math/tex; mode=display">// \alpha学习率\ dw对w的变化率\\\begin{align*}repeat\{\\&w:w-\alpha\frac{dJ{(w)}}{d{w}}\\\}\end{align*}</script><h4 id="2-5-导数"><a href="#2-5-导数" class="headerlink" title="2.5 导数"></a>2.5 导数</h4><p>derivatives    物理上：slope 斜率（函数）</p><h4 id="2-7-计算图"><a href="#2-7-计算图" class="headerlink" title="2.7 计算图"></a>2.7 计算图</h4><ul><li>链式法则</li></ul>]]></content>
+      
+      
       <categories>
-        <category>机器学习</category>
+          
+          <category> 机器学习 </category>
+          
       </categories>
-      <tags>
-        <tag>神经网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>how to install hexo and deploy it</title>
-    <url>/how-to-install-hexo-and-deploy-it/</url>
-    <content><![CDATA[<p>博客搭建</p>
-<h4 id="1-nodejs"><a href="#1-nodejs" class="headerlink" title="1.nodejs"></a>1.nodejs</h4><ul>
-<li>安装<a href="https://nodejs.org/dist/v12.13.0/node-v12.13.0-x64.msi" target="_blank" rel="noopener">nodejs</a></li>
-</ul>
-<h4 id="2-git"><a href="#2-git" class="headerlink" title="2.git"></a>2.git</h4><h4 id="3-github-io上部署hexo项目"><a href="#3-github-io上部署hexo项目" class="headerlink" title="3.github.io上部署hexo项目"></a>3.github.io上部署hexo项目</h4><h4 id="4-命令"><a href="#4-命令" class="headerlink" title="4.命令"></a>4.命令</h4><h5 id="4-1启动"><a href="#4-1启动" class="headerlink" title="4.1启动"></a>4.1启动</h5><ul>
-<li><code>npm install -g hexo-cli</code>: install hexo client </li>
-<li><code>hexo init</code>  empty_fold_name: create a default hexo project </li>
-<li><code>hexo server</code>: start hexo ,you can visit it through <a href="localhost:8080" target="_blank" rel="noopener">localhost:8080</a></li>
-</ul>
-<h5 id="4-2-创建并部署新文件"><a href="#4-2-创建并部署新文件" class="headerlink" title="4.2 创建并部署新文件"></a>4.2 创建并部署新文件</h5><h6 id="4-2-1-文件夹"><a href="#4-2-1-文件夹" class="headerlink" title="4.2.1 文件夹"></a>4.2.1 文件夹</h6><ul>
-<li>hexo new directory_name file_name</li>
-</ul>
-<h6 id="4-2-2-文件"><a href="#4-2-2-文件" class="headerlink" title="4.2.2 文件"></a>4.2.2 文件</h6><ul>
-<li><p><code>hexo new [layout] &lt;title&gt;</code></p>
-<ul>
-<li>layout:<ul>
-<li>post(default)</li>
-<li>page</li>
-<li>draft</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>  hexo new page —path about/me “About me”` :创建文件</p>
-</blockquote>
-</li>
-<li><p><code>hexo generate</code> 生成静态文件  : compile markdown file to html </p>
-</li>
-<li><p><code>hexo generate -d</code> 文件生成后部署: auto depoly to site you configured </p>
-</li>
-</ul>
-<h5 id="4-3-删除"><a href="#4-3-删除" class="headerlink" title="4.3 删除"></a>4.3 删除</h5><ul>
-<li>1.直接在_post文件夹下删除</li>
-<li>2 <code>hexo g</code>: 重新生成html文件</li>
-<li>3 <code>hexo d</code>: 部署,部署前先verify一下邮箱</li>
-</ul>
-<h4 id="5主题"><a href="#5主题" class="headerlink" title="5主题"></a>5主题</h4><ul>
-<li>使用git将主题下载到themes下</li>
-<li>主配置中将主题替换你所想要的</li>
-</ul>
-<h4 id="6-心得"><a href="#6-心得" class="headerlink" title="6.心得"></a>6.心得</h4><ul>
-<li><p>_post下的页面才会出现在主页的链接里</p>
-</li>
-<li><p>定义标签需要 创建tags（page）,并在md文件指定 type: tags</p>
-<ul>
-<li><p>其它文件归类时</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">tags:</span></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">love</span></span></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>下载next主题</p>
-</li>
-</ul>
-<h4 id="7-其它"><a href="#7-其它" class="headerlink" title="7.其它"></a>7.其它</h4><h5 id="7-1-支持latex"><a href="#7-1-支持latex" class="headerlink" title="7.1 支持latex"></a>7.1 <a href="https://www.infiniteft.xyz/2018/03/21/make-hexo-support-latex/" target="_blank" rel="noopener">支持latex</a></h5><ul>
-<li><p>7.1.1 更换渲染器</p>
-<blockquote>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-renderer-marked --save</span></pre></td></tr><tr><td class="code"><pre><span class="line">$ npm install hexo-renderer-kramed --save</span></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>7.1.2 文章加引用</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span></pre></td></tr></table></figure>
-</li>
-<li><p>7.1.3 主题开启mathjax</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mathjax:</span>  </span></pre></td></tr><tr><td class="code"><pre><span class="line">	<span class="attr">enable:</span> <span class="literal">true</span></span></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>tutorial</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 神经网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>how to install hexo and deploy it</title>
+      <link href="/how-to-install-hexo-and-deploy-it/"/>
+      <url>/how-to-install-hexo-and-deploy-it/</url>
+      
+        <content type="html"><![CDATA[<p>博客搭建</p><h4 id="1-nodejs"><a href="#1-nodejs" class="headerlink" title="1.nodejs"></a>1.nodejs</h4><ul><li>安装<a href="https://nodejs.org/dist/v12.13.0/node-v12.13.0-x64.msi" target="_blank" rel="noopener">nodejs</a></li></ul><h4 id="2-git"><a href="#2-git" class="headerlink" title="2.git"></a>2.git</h4><h4 id="3-github-io上部署hexo项目"><a href="#3-github-io上部署hexo项目" class="headerlink" title="3.github.io上部署hexo项目"></a>3.github.io上部署hexo项目</h4><h4 id="4-命令"><a href="#4-命令" class="headerlink" title="4.命令"></a>4.命令</h4><h5 id="4-1启动"><a href="#4-1启动" class="headerlink" title="4.1启动"></a>4.1启动</h5><ul><li><code>npm install -g hexo-cli</code>: install hexo client </li><li><code>hexo init</code>  empty_fold_name: create a default hexo project </li><li><code>hexo server</code>: start hexo ,you can visit it through <a href="localhost:8080" target="_blank" rel="noopener">localhost:8080</a></li></ul><h5 id="4-2-创建并部署新文件"><a href="#4-2-创建并部署新文件" class="headerlink" title="4.2 创建并部署新文件"></a>4.2 创建并部署新文件</h5><h6 id="4-2-1-文件夹"><a href="#4-2-1-文件夹" class="headerlink" title="4.2.1 文件夹"></a>4.2.1 文件夹</h6><ul><li>hexo new directory_name file_name</li></ul><h6 id="4-2-2-文件"><a href="#4-2-2-文件" class="headerlink" title="4.2.2 文件"></a>4.2.2 文件</h6><ul><li><p><code>hexo new [layout] &lt;title&gt;</code></p><ul><li>layout:<ul><li>post(default)</li><li>page</li><li>draft</li></ul></li></ul><blockquote><p>  hexo new page —path about/me “About me”` :创建文件</p></blockquote></li><li><p><code>hexo generate</code> 生成静态文件  : compile markdown file to html </p></li><li><p><code>hexo generate -d</code> 文件生成后部署: auto depoly to site you configured </p></li></ul><h5 id="4-3-删除"><a href="#4-3-删除" class="headerlink" title="4.3 删除"></a>4.3 删除</h5><ul><li>1.直接在_post文件夹下删除</li><li>2 <code>hexo g</code>: 重新生成html文件</li><li>3 <code>hexo d</code>: 部署,部署前先verify一下邮箱</li></ul><h4 id="5主题"><a href="#5主题" class="headerlink" title="5主题"></a>5主题</h4><ul><li>使用git将主题下载到themes下</li><li>主配置中将主题替换你所想要的</li></ul><h4 id="6-心得"><a href="#6-心得" class="headerlink" title="6.心得"></a>6.心得</h4><ul><li><p>_post下的页面才会出现在主页的链接里</p></li><li><p>定义标签需要 创建tags（page）,并在md文件指定 type: tags</p><ul><li><p>其它文件归类时</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">love</span></span></pre></td></tr></table></figure></li></ul></li><li><p>下载next主题</p></li></ul><h4 id="7-其它"><a href="#7-其它" class="headerlink" title="7.其它"></a>7.其它</h4><h5 id="7-1-支持latex"><a href="#7-1-支持latex" class="headerlink" title="7.1 支持latex"></a>7.1 <a href="https://www.infiniteft.xyz/2018/03/21/make-hexo-support-latex/" target="_blank" rel="noopener">支持latex</a></h5><ul><li><p>7.1.1 更换渲染器</p><blockquote><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ npm uninstall hexo-renderer-marked --save</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ npm install hexo-renderer-kramed --save</span></pre></td></tr></table></figure></blockquote></li><li><p>7.1.2 文章加引用</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span></pre></td></tr></table></figure></li><li><p>7.1.3 主题开启mathjax</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span>  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">enable:</span> <span class="literal">true</span></span></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> tutorial </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>

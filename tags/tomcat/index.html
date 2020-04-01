@@ -308,6 +308,34 @@
 
       <h3 class="post-title">
         
+            <a class="post-title-link" href="/tomcat-introduction/" itemprop="url">
+              
+                <span itemprop="name">'tomcat-introduction'</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2020-04-01T11:21:33+08:00"
+              content="2020-04-01" >
+          04-01
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
             <a class="post-title-link" href="/install-jdk-tomcat-in-centos/" itemprop="url">
               
                 <span itemprop="name">install-jdk-tomcat-in-centos</span>
@@ -386,7 +414,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -408,7 +436,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -628,6 +656,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7LILfu6eGXhgqrPNiju89BW6-gzGzoHsz',
+        appKey: 'xundpWHrEvpIzD4erRrkz9fu',
+        placeholder: '说你想说的 | Say what you want to say',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'4' || 10,
+    });
+  </script>
 
 
 
